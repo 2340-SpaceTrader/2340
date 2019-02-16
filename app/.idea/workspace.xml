@@ -6,9 +6,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5de30c5c-c69e-414f-820a-d01c31abee90" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/gatech/cs2340/spacetrader/models/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/gatech/cs2340/spacetrader/models/LoginPage.java" afterDir="false" />
-    </list>
+    <list default="true" id="5de30c5c-c69e-414f-820a-d01c31abee90" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -575,12 +573,12 @@
       <option name="presentableId" value="Default" />
       <updated>1550295287570</updated>
       <workItem from="1550349856534" duration="505000" />
-      <workItem from="1550351001060" duration="4327000" />
+      <workItem from="1550351001060" duration="4863000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4832000" />
+    <option name="totallyTimeSpent" value="5368000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -593,7 +591,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
