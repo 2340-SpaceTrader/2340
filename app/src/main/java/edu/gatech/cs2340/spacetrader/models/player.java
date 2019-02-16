@@ -43,6 +43,9 @@ public class player {
     public boolean assertSP(ArrayList<Integer> list) {
         int sum = 0;
         for(int i = 0; i < 4; i++) {
+            if (list.get(i) < 0) {
+                throw new IllegalArgumentException("Input cannot be negative");
+            }
             sum += list.get(i);
         }
         if (sum == 16) {
