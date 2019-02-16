@@ -4,6 +4,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import edu.gatech.cs2340.spacetrader.R;
 
 public class AddPlayerActivity extends AppCompatActivity {
     private EditText name;
