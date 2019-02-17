@@ -77,7 +77,7 @@ public class AddPlayerActivity extends AppCompatActivity {
                     return;
                 }
                 if (!player.assertSum16(playerPts)) {
-                    Toast.makeText(getApplicationContext(), "Total skill points cannot be bigger than 16", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Total skill points cannot be smaller or bigger than 16", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 System.out.println(player.toString());
