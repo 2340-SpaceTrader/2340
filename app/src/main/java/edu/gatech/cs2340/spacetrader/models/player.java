@@ -96,7 +96,7 @@ public class player {
 
     /**
      * To display player's attributes
-     * @return
+     * @return String
      */
 
     @Override

@@ -61,6 +61,12 @@ public class AddPlayerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 player = new player(name.getText().toString(), (gameDifficulty) difficultySpinner.getSelectedItem());
                 ArrayList<Integer> playerPts = new ArrayList<>(4);
+                if(name.length() == 0 || pilotPts.length() == 0
+                        || fighterPts.length() == 0 || traderPts.length() == 0
+                        || engrPts.length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Input cannot be blank", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 playerPts.add(Integer.parseInt(pilotPts.getText().toString()));
                 playerPts.add(Integer.parseInt(fighterPts.getText().toString()));
                 playerPts.add(Integer.parseInt(traderPts.getText().toString()));
