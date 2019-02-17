@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e49249f1-c264-4948-8ff5-63315b9530ca" name="Default Changelist" comment="" />
+    <list default="true" id="e49249f1-c264-4948-8ff5-63315b9530ca" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/gatech/cs2340/spacetrader/views/AddPlayerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/gatech/cs2340/spacetrader/views/AddPlayerActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/gatech/cs2340/spacetrader/views/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/gatech/cs2340/spacetrader/views/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_add_player.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_add_player.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,6 +18,7 @@
     <session id="-307175680">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -76,7 +83,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Lab3MVVM/Lab3MVVM" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
