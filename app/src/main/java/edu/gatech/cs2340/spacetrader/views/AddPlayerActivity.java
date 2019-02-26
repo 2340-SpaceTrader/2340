@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 import edu.gatech.cs2340.spacetrader.MainActivity;
 import edu.gatech.cs2340.spacetrader.R;
+import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
+import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.gameDifficulty;
 import edu.gatech.cs2340.spacetrader.models.player;
 
@@ -80,7 +82,17 @@ public class AddPlayerActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Total skill points cannot be smaller or bigger than 16", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                CreateUniverse universe = new CreateUniverse();
+                ArrayList<SolarSystem> solarList = new ArrayList<>(universe.create());
+                for(int i = 0 ; i < solarList.size(); i++) {
+                    System.out.println("----------------------------");
+                    System.out.println("solarPlanet " + i + " info:");
+                    System.out.println("");
+                    System.out.println(solarList.get(i).toString());
+                }
                 System.out.println(player.toString());
+                Intent intent = new Intent(AddPlayerActivity.this, PlayingActivity.class);
+                startActivity(intent);
             }
         });
 
