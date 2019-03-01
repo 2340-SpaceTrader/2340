@@ -68,13 +68,21 @@ public class CreateUniverse {
                 arrayListY.add(a);
             }
         }
-
-        for (String name : solarName) {
-            int x = arrayListX.get((int) (Math.random()*arrayListX.size()));
-            int y = arrayListY.get((int) (Math.random()*arrayListY.size()));
+        for (int i = 0; i < 5; i++) {
+            int x = arrayListX.get(i);
+            int y = arrayListY.get(i);
+            String name = solarName.get(i);
             String techLevel = techLevelList.get((int) (Math.random()*techLevelList.size()));
-            String resource = resourcesList.get((int) (Math.random()*resourcesList.size())) ;
-            SolarSystem newSolar = new SolarSystem(name, x, y, techLevel, resource);
+            SolarSystem newSolar = new SolarSystem(name, x, y, techLevel, "NOSPECIALRESOURCES");
+            solarList.add(newSolar);
+        }
+        for (int i = 5; i < 10; i++) {
+            int x = arrayListX.get(i);
+            int y = arrayListY.get(i);
+            String name = solarName.get(i);
+            String techLevel = techLevelList.get((int) (Math.random()*techLevelList.size()));
+            String resources = resourcesList.get((int) (Math.random()*techLevelList.size()));
+            SolarSystem newSolar = new SolarSystem(name, x, y, techLevel, resources);
             solarList.add(newSolar);
         }
         return solarList;
