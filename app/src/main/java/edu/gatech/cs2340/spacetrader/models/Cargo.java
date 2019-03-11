@@ -40,11 +40,16 @@ public class Cargo {
     public Resources removeCargo(Resources item) {
         int keySpot = hashValue(item.getHash());
         MapEntry<Resources,Integer> newValue;
-        Resources remove;
+        Resources remove = null;
         if (cargo[keySpot] != null) {
             int val = cargo[keySpot].value;
             val = val - 1;
-            if (val >= 0) {
+
+            if (val == 0) {
+                remove = cargo[keySpot].key;
+                cargo[keySpot] = null;
+                size--;
+            } else if (val > 0) {
                 remove = cargo[keySpot].key;
                 cargo[keySpot] = new MapEntry<>(item,val);
                 size--;
@@ -102,6 +107,16 @@ public class Cargo {
     public int getCapacity() {
         return spaceCapacity;
     }
+    // public Resources getItem(Resources item) {
+    //     int keyspot = hashValue(item);
+    //     Resources get = null;
+    //     if (cargo[keyspot] != null) {
+    //         if (cargo[keyspot].val != 0) {
+    //             get = cargo[keyspot].key;
+    //         }
+    //     }
+    //     return get;
+    // }
 
     // public static void main(String[] args) {
     //     Cargo ship = new Cargo(10);
@@ -116,10 +131,13 @@ public class Cargo {
     //     ship.addCargo(Resources.Narcotics);
     //     ship.addCargo(Resources.Robots);
     //     ship.addCargo(Resources.Robots);
+
+
+    //     // System.out.println(ship.getItem(Resources.Robots));
     //     //should have ten items
-    //     System.out.println(ship.displayCargo());
+    //     System.out.println("Should have ten items: "+ship.displayCargo());
     //     //should be ten
-    //     System.out.println(ship.occupiedSpace());
+    //     System.out.println("size should eqaul 10: "+ship.occupiedSpace());
 
     //     //clears it
     //     ship.clear();
@@ -131,8 +149,9 @@ public class Cargo {
     //     System.out.println(ship.displayCargo());
     //     System.out.println(ship.occupiedSpace());
     //     for (int i = 0; i < 10; i++) {
-    //         System.out.println(ship.removeCargo(Resources.Water));
+    //         System.out.println("Removed: "+ship.removeCargo(Resources.Water));
     //     }
+    //     System.out.println("Should be empty: "+ship.displayCargo());
     //     System.out.println(ship.removeCargo(Resources.Water));
     //     System.out.println(ship.occupiedSpace());
 

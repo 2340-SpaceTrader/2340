@@ -12,6 +12,7 @@ public enum Resources {
     Narcotics(8,"Narcotics",5, 0, 5, 3500, -125, 150, 2000, 3000),
     Robots(9,"Robots",6, 4, 7, 5000, -150, 100, 3500, 5000);
 
+    int hash;
     String type;
     int mTLP;
     int mTLU;
@@ -23,6 +24,7 @@ public enum Resources {
     int mTH;
 
     Resources(int hash, String type, int mTLP, int mTLU, int tTP, int basePrice, int iPL, int variance,int mTL, int mTH) {
+    this.hash = hash;
     this.type = type;
     this.mTLP = mTLP;
     this.mTLU = mTLU;
@@ -32,6 +34,9 @@ public enum Resources {
     this.variance = variance;
     this.mTL = mTL;
     this.mTH = mTH;
+    }
+    public int getHash() {
+        return hash;
     }
     public String getType() {
         return type;
