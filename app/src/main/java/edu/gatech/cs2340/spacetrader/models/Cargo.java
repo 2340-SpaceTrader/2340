@@ -1,7 +1,8 @@
-
+package edu.gatech.cs2340.spacetrader.models;
 import java.util.ArrayList;
 import java.util.HashMap;
 //package edu.gatech.cs2340.lab3newcomponents.entity;
+
 public class Cargo {
     public Cargo(int spaceCapacity) {
         this.spaceCapacity = spaceCapacity;

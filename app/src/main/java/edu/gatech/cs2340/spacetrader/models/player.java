@@ -1,4 +1,4 @@
-//package edu.gatech.cs2340.spacetrader.models;
+package edu.gatech.cs2340.spacetrader.models;
 
 import java.util.ArrayList;
 
@@ -17,6 +17,7 @@ public class player {
      * @param gameDifficulty
      */
 
+
     public player(String name, gameDifficulty gameDifficulty) {
         this.name = name;
         this.gameDifficulty = gameDifficulty;
@@ -24,7 +25,6 @@ public class player {
         credits =1000;
         ship = new Ship();
         SPAllocation = new ArrayList<Integer>(4);
-
     }
 
     public String getName() {
@@ -47,8 +47,10 @@ public class player {
         return credits;
     }
 
+
     public Ship getShip() {
         return ship;
+
     }
 
     public void setName(String name) {

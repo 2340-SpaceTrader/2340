@@ -1,4 +1,4 @@
-//package edu.gatech.cs2340.spacetrader.models;
+package edu.gatech.cs2340.spacetrader.models;
 public class Ship {
     private int spaceCapacity;
     private ShipType ship_type;
