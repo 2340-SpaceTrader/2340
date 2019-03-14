@@ -7,7 +7,7 @@ public class player {
     private String name;
     private int skillPoints;
     private int credits;
-    private boolean GnatSpaceShip;
+    private Ship ship;
     private gameDifficulty gameDifficulty;
     private ArrayList SPAllocation;
 
@@ -17,12 +17,13 @@ public class player {
      * @param gameDifficulty
      */
 
+
     public player(String name, gameDifficulty gameDifficulty) {
         this.name = name;
         this.gameDifficulty = gameDifficulty;
         skillPoints = 16;
         credits =1000;
-        GnatSpaceShip = true;
+        ship = new Ship();
         SPAllocation = new ArrayList<Integer>(4);
     }
 
@@ -46,8 +47,10 @@ public class player {
         return credits;
     }
 
-    public boolean getShip() {
-        return GnatSpaceShip;
+
+    public Ship getShip() {
+        return ship;
+
     }
 
     public void setName(String name) {
@@ -102,9 +105,9 @@ public class player {
     @Override
     public String toString() {
         return String.format("Player's name: %s \n Game mode: %s \n " +
-                "Credits: %d \n GnatSpaceShip: %s \n" +
+                "Credits: %d \n ShipType: %s \n" +
                 " Pilot points: %d \n Fighter points: %d \n Trader points: %d \n Engineer points: %d \n"
-                , name, gameDifficulty.toString(), credits, GnatSpaceShip, SPAllocation.get(0), SPAllocation.get(1),
+                , name, gameDifficulty.toString(), credits, ship.getShipType().getShipName(), SPAllocation.get(0), SPAllocation.get(1),
                 SPAllocation.get(2), SPAllocation.get(3));
     }
 }
