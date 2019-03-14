@@ -1,4 +1,4 @@
-//package edu.gatech.cs2340.spacetrader.models;
+package edu.gatech.cs2340.spacetrader.models;
 public enum Resources {
     Water(0,"Water",0,0,2,30,3,4,30,50),
     Furs(1,"Furs",0, 0, 0, 250, 10, 10, 230, 280),

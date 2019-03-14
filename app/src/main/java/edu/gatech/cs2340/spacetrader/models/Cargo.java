@@ -1,6 +1,6 @@
-
+package edu.gatech.cs2340.spacetrader.models;
 import java.util.ArrayList;
-//package edu.gatech.cs2340.lab3newcomponents.entity;
+
 public class Cargo {
     public class MapEntry<K, V> {
         private K key;
