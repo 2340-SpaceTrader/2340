@@ -1,6 +1,6 @@
 package edu.gatech.cs2340.spacetrader.models;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 
 public class player {
     private String name;
@@ -15,6 +15,7 @@ public class player {
      * @param name
      * @param gameDifficulty
      */
+
 
     public player(String name, gameDifficulty gameDifficulty) {
         this.name = name;
