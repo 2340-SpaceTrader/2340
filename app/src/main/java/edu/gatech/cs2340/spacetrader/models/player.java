@@ -23,7 +23,7 @@ public class player {
         this.name = name;
         this.gameDifficulty = gameDifficulty;
         skillPoints = 16;
-        credits = 1000.0;
+        credits = 100000.0;
         ship = new Ship();
         SPAllocation = new ArrayList<Integer>(4);
     }

@@ -42,7 +42,7 @@ public class Cargo {
             throw new java.util.NoSuchElementException("The item does not exists");
         }
         if (cargo.get(item) < count) {
-            throw new IllegalArgumentException("Cannot remove more than the amount of item in the cargo");
+            throw new IllegalArgumentException("Cannot sell more than the amount of item in the cargo");
         }
         int a = cargo.get(item);
         a -= count;
