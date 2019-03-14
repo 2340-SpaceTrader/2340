@@ -9,8 +9,9 @@ import java.util.List;
 public class MarketPlace {
     private HashMap<Resources, Double> buyList;
     private HashMap<Resources, Double> sellList;
-    public MarketPlace(){
-
+    SolarSystem planet;
+    public MarketPlace(SolarSystem solar){
+    this.planet = solar;
     }
 
     public void display() {
@@ -30,19 +31,20 @@ public class MarketPlace {
 //        buyList.keySet();
 //        sellList.keySet();
         for (Resources item: buyList.keySet()) {
-            
+            double price = item.getBasePrice() + (item.getIPL()* (planet.getTechLevel().getValue() - item.getMTLP())) + item.getVariance();
+
         }
 
         return 0.0;
     }
 
-    public void comparingTechLevel(SolarSystem solar) {
+    public void comparingTechLevel() {
         List<Resources> list = Arrays.asList(Resources.values());
         for (Resources res : list) {
-            if (res.getMTLP() >= solar.getTechLevel().getValue()) {
+            if (res.getMTLP() >= planet.getTechLevel().getValue()) {
                 buyList.put(res, 0.0);
             }
-            if (res.getMTLU() >= solar.getTechLevel().getValue()) {
+            if (res.getMTLU() >= planet.getTechLevel().getValue()) {
                 sellList.put(res, 0.0);
             }
         }
