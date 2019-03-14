@@ -1,4 +1,9 @@
 package edu.gatech.cs2340.spacetrader.models;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public enum Resources {
     Water("Water",0,0,2,30,3,4,30,50),
     Furs("Furs",0, 0, 0, 250, 10, 10, 230, 280),

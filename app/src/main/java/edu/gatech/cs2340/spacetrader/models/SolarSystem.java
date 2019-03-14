@@ -4,14 +4,14 @@ public class SolarSystem {
     private String name;
     private int x;
     private int y;
-    private String techLevel;
+    private TechLevel techLevel;
     private String resources;
 
     public SolarSystem(String name) {
         this.name = name;
     }
 
-    public SolarSystem(String name, int x, int y, String techLevel, String resources) {
+    public SolarSystem(String name, int x, int y, TechLevel techLevel, String resources) {
         this.name = name;
         this.x = x;
         this.y = y;
@@ -31,7 +31,7 @@ public class SolarSystem {
         this.y = y;
     }
 
-    public void setTechLevel(String techLevel) {
+    public void setTechLevel(TechLevel techLevel) {
         this.techLevel = techLevel;
     }
 
@@ -51,7 +51,7 @@ public class SolarSystem {
         return y;
     }
 
-    public String getTechLevel() {
+    public TechLevel getTechLevel() {
         return techLevel;
     }
 
@@ -61,7 +61,7 @@ public class SolarSystem {
 
     @Override
     public String toString() {
-        return String.format("Solar System Name: %s \n At position: (%d, %d) \n Tech Level: %s \n Resources: %s", name, x, y, techLevel, resources);
+        return String.format("Solar System Name: %s \n At position: (%d, %d) \n Tech Level: %s \n Resources: %s", name, x, y, techLevel.getName(), resources);
     }
 
 }

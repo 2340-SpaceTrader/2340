@@ -5,7 +5,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 
+import edu.gatech.cs2340.spacetrader.models.Resources;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
+import edu.gatech.cs2340.spacetrader.models.TechLevel;
 
 public class CreateUniverse {
     private SolarSystem solarSystem;
@@ -28,15 +30,15 @@ public class CreateUniverse {
         solarName.add("Jason");
         solarName.add("Lave");
 
-        ArrayList<String> techLevelList = new ArrayList<>();
-        techLevelList.add("Pre-Agriculture");
-        techLevelList.add("Agriculture");
-        techLevelList.add("Medieval");
-        techLevelList.add("Renaissance");
-        techLevelList.add("Early Industrial");
-        techLevelList.add("Industrial");
-        techLevelList.add("Post-Industrial");
-        techLevelList.add("Hi-Tech");
+        ArrayList<TechLevel> techLevelList = new ArrayList<>();
+        techLevelList.add(TechLevel.PreAgriculture);
+        techLevelList.add(TechLevel.Agriculture);
+        techLevelList.add(TechLevel.Medieval);
+        techLevelList.add(TechLevel.Renaissance);
+        techLevelList.add(TechLevel.EarlyIndustrial);
+        techLevelList.add(TechLevel.Industrial);
+        techLevelList.add(TechLevel.PostIndustrial);
+        techLevelList.add(TechLevel.HiTech);
 
         ArrayList<String> resourcesList = new ArrayList<>();
         resourcesList.add("NOSPECIALRESOURCES");
@@ -72,7 +74,7 @@ public class CreateUniverse {
             int x = arrayListX.get(i);
             int y = arrayListY.get(i);
             String name = solarName.get(i);
-            String techLevel = techLevelList.get((int) (Math.random()*techLevelList.size()));
+            TechLevel techLevel = techLevelList.get((int) (Math.random()*techLevelList.size()));
             SolarSystem newSolar = new SolarSystem(name, x, y, techLevel, "NOSPECIALRESOURCES");
             solarList.add(newSolar);
         }
@@ -80,7 +82,7 @@ public class CreateUniverse {
             int x = arrayListX.get(i);
             int y = arrayListY.get(i);
             String name = solarName.get(i);
-            String techLevel = techLevelList.get((int) (Math.random()*techLevelList.size()));
+            TechLevel techLevel = techLevelList.get((int) (Math.random()*techLevelList.size()));
             String resources = resourcesList.get((int) (Math.random()*techLevelList.size()));
             SolarSystem newSolar = new SolarSystem(name, x, y, techLevel, resources);
             solarList.add(newSolar);
