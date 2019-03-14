@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.AddPlayerActivity">
+
+    <EditText
+        android:id="@+id/pilot_point"
+        android:layout_width="117dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/skill_points_header"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="39dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
+        android:visibility="visible" />
+
+    <EditText
+        android:id="@+id/fighter_point"
+        android:layout_width="117dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/skill_points_header"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="112dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
+        android:visibility="visible" />
+
+    <EditText
+        android:id="@+id/trader_point"
+        android:layout_width="117dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/skill_points_header"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="191dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
+        android:visibility="visible" />
+
+    <EditText
+        android:id="@+id/engineer_point"
+        android:layout_width="117dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/skill_points_header"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="286dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
+        android:visibility="visible" />
+
+    <TextView
+        android:text="Name:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name_header"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="11dp" />
+
+    <EditText
+        android:id="@+id/player_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="11dp"
+        android:layout_toRightOf="@id/name_header"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:text="Difficulty:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/difficulty_header"
+        android:layout_below="@+id/name_header"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="18dp" />
+
+    <Spinner
+        android:id="@+id/difficulty_spinner"
+        android:layout_width="212dp"
+        android:layout_height="91dp"
+        android:layout_below="@+id/name_header"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="-17dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginRight="46dp" />
+
+    <TextView
+        android:text="Skill Points:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/skill_points_header"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/difficulty_header"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:id="@+id/pilot_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/skill_points_header"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="22dp"
+        android:text="Pilot:" />
+
+    <TextView
+        android:id="@+id/fighter_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pilot_header"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="45dp"
+        android:text="Fighter:" />
+
+    <TextView
+        android:id="@+id/trader_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fighter_header"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="55dp"
+        android:text="Trader:" />
+
+    <TextView
+        android:id="@+id/engineer_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/trader_header"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="58dp"
+        android:text="Engineer:" />
+
+    <Button
+        android:id="@+id/ok_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="11dp"
+        android:layout_marginBottom="12dp"
+        android:text="Ok" />
+
+    <Button
+        android:id="@+id/exit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="297dp"
+        android:layout_marginBottom="10dp"
+        android:text="Exit" />
+
+</RelativeLayout>

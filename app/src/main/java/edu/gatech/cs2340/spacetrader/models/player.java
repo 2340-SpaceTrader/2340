@@ -2,6 +2,7 @@ package edu.gatech.cs2340.spacetrader.models;
 
 import java.util.ArrayList;
 
+
 public class player {
     private String name;
     private int skillPoints;
@@ -46,8 +47,10 @@ public class player {
         return credits;
     }
 
+
     public Ship getShip() {
         return ship;
+
     }
 
     public void setName(String name) {
