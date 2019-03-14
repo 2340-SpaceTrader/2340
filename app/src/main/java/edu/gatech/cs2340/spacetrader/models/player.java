@@ -6,10 +6,12 @@ import java.util.ArrayList;
 public class player {
     private String name;
     private int skillPoints;
-    private int credits;
+    private double credits;
     private Ship ship;
     private gameDifficulty gameDifficulty;
     private ArrayList SPAllocation;
+
+
 
     /**
      * Constructor of a player
@@ -17,12 +19,11 @@ public class player {
      * @param gameDifficulty
      */
 
-
     public player(String name, gameDifficulty gameDifficulty) {
         this.name = name;
         this.gameDifficulty = gameDifficulty;
         skillPoints = 16;
-        credits =1000;
+        credits = 1000.0;
         ship = new Ship();
         SPAllocation = new ArrayList<Integer>(4);
     }
@@ -43,7 +44,7 @@ public class player {
         return SPAllocation;
     }
 
-    public int getCredits() {
+    public double getCredits() {
         return credits;
     }
 
@@ -69,6 +70,9 @@ public class player {
         SPAllocation = list;
     }
 
+    public void setCredits(double credits) {
+        this.credits = credits;
+    }
     /**
      * To check for negative and number bigger than 16
      * @param list

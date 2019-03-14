@@ -24,4 +24,5 @@ public enum TechLevel {
     public int getValue() {
         return value;
     }
+
 }
