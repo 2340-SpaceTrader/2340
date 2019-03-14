@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 
+import edu.gatech.cs2340.spacetrader.models.PriceResources;
 import edu.gatech.cs2340.spacetrader.models.Resources;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.TechLevel;
@@ -40,20 +41,20 @@ public class CreateUniverse {
         techLevelList.add(TechLevel.PostIndustrial);
         techLevelList.add(TechLevel.HiTech);
 
-        ArrayList<String> resourcesList = new ArrayList<>();
-        resourcesList.add("NOSPECIALRESOURCES");
-        resourcesList.add("MINERALRICH");
-        resourcesList.add("MINERALPOOR");
-        resourcesList.add("DESERT");
-        resourcesList.add("LOTSOFWATER");
-        resourcesList.add("RICHSOIL");
-        resourcesList.add("POORSOIL");
-        resourcesList.add("RICHFAUNA");
-        resourcesList.add("LIFELESS");
-        resourcesList.add("WEIRDMUSHROOMS");
-        resourcesList.add("LOTSOFHERBS");
-        resourcesList.add("ARTISTIC");
-        resourcesList.add("WARLIKE");
+        ArrayList<PriceResources> resourcesList = new ArrayList<>();
+        resourcesList.add(PriceResources.Never);
+        resourcesList.add(PriceResources.MineralRich);
+        resourcesList.add(PriceResources.MineralPoor);
+        resourcesList.add(PriceResources.Desert);
+        resourcesList.add(PriceResources.LotsOfWater);
+        resourcesList.add(PriceResources.RichSoil);
+        resourcesList.add(PriceResources.PoorSoil);
+        resourcesList.add(PriceResources.RichFauna);
+        resourcesList.add(PriceResources.Lifeless);
+        resourcesList.add(PriceResources.WeirdMushrooms);
+        resourcesList.add(PriceResources.LotsOfHerbs);
+        resourcesList.add(PriceResources.Artistic);
+        resourcesList.add(PriceResources.Warlike);
 
         ArrayList<Integer> arrayListX = new ArrayList<>();
         while (arrayListX.size() < 10) {
@@ -75,7 +76,7 @@ public class CreateUniverse {
             int y = arrayListY.get(i);
             String name = solarName.get(i);
             TechLevel techLevel = techLevelList.get((int) (Math.random()*techLevelList.size()));
-            SolarSystem newSolar = new SolarSystem(name, x, y, techLevel, "NOSPECIALRESOURCES");
+            SolarSystem newSolar = new SolarSystem(name, x, y, techLevel, PriceResources.Never);
             solarList.add(newSolar);
         }
         for (int i = 5; i < 10; i++) {
@@ -83,7 +84,7 @@ public class CreateUniverse {
             int y = arrayListY.get(i);
             String name = solarName.get(i);
             TechLevel techLevel = techLevelList.get((int) (Math.random()*techLevelList.size()));
-            String resources = resourcesList.get((int) (Math.random()*techLevelList.size()));
+            PriceResources resources = resourcesList.get((int) (Math.random()*techLevelList.size()));
             SolarSystem newSolar = new SolarSystem(name, x, y, techLevel, resources);
             solarList.add(newSolar);
         }

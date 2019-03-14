@@ -5,13 +5,13 @@ public class SolarSystem {
     private int x;
     private int y;
     private TechLevel techLevel;
-    private String resources;
+    private PriceResources resources;
 
     public SolarSystem(String name) {
         this.name = name;
     }
 
-    public SolarSystem(String name, int x, int y, TechLevel techLevel, String resources) {
+    public SolarSystem(String name, int x, int y, TechLevel techLevel, PriceResources resources) {
         this.name = name;
         this.x = x;
         this.y = y;
@@ -35,7 +35,7 @@ public class SolarSystem {
         this.techLevel = techLevel;
     }
 
-    public void setResources(String resources) {
+    public void setResources(PriceResources resources) {
         this.resources = resources;
     }
 
@@ -55,7 +55,7 @@ public class SolarSystem {
         return techLevel;
     }
 
-    public String getResources() {
+    public PriceResources getPriceResources() {
         return resources;
     }
 

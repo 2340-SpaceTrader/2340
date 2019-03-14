@@ -61,8 +61,8 @@ public class MarketPlace {
 
     public void calculateBuyPrice(PriceResources change) {
         double increase = 0.0;
-        if (change == null) {
-            increase = 1.0;
+        if (change.getIncrease() == 1.0) {
+            increase = change.getIncrease();
         } else if (change.getIncrease() == 10.0) {
             increase = change.getIncrease();
         } else if (change.getIncrease() == 5.0) {
@@ -120,12 +120,22 @@ public class MarketPlace {
 
     public void quantityTechLevel(SolarSystem solar) {
         List<Resources> list = Arrays.asList(Resources.values());
+
+//        System.out.println(Arrays.toString(list));
         for (Resources res : list) {
             if (res.getTTP() == solar.getTechLevel().getValue()) {
-                quantMap.put(res, 50);
+                quantMap.putIfAbsent(res, 50);
             } else {
-                quantMap.put(res, 10);
+                quantMap.putIfAbsent(res, 10);
             }
         }
+    }
+
+    public static void main(String[] args) {
+        SolarSystem solar = new SolarSystem("Tu", 2, 3, TechLevel.Agriculture, PriceResources.Cold);
+        MarketPlace market = new MarketPlace(solar);
+        player player = new player("New player", gameDifficulty.Beginner);
+        market.buy(player, Resources.Food, player.getShip().getCargoStorage(), 3, solar.getPriceResources());
+        market.display();
     }
 }
