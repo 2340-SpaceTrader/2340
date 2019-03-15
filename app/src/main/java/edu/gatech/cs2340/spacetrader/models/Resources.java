@@ -1,10 +1,11 @@
 package edu.gatech.cs2340.spacetrader.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public enum Resources {
+public enum Resources implements Serializable {
     Water("Water",0,0,2,30,3,4,"Drought", "LotsOfWater", "Dessert",30,50),
     Furs("Furs",0, 0, 0, 250, 10, 10, "Cold", "RichFauna", "Lifeless", 230, 280),
     Food("Food",1, 0,1, 100, 5, 5, "CropFail", "RichSoil", "PoorSoil" ,90, 160),

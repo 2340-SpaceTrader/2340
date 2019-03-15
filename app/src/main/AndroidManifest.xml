@@ -19,6 +19,9 @@
         <activity
             android:name=".views.AddPlayerActivity" />
         <activity android:name=".views.PlayingActivity"/>
+        <activity android:name=".views.MarketActivity"/>
+        <activity android:name=".views.BuyActivity"/>
+        <activity android:name=".views.SellActivity"/>
     </application>
 
 </manifest>

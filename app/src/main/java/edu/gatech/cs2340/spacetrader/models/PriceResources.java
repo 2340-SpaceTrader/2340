@@ -1,6 +1,8 @@
 package edu.gatech.cs2340.spacetrader.models;
 
-public enum PriceResources {
+import java.io.Serializable;
+
+public enum PriceResources implements Serializable {
     //expesive
     Desert("Desert", 5.0),
     Lifeless("Lifeless", 5.0),

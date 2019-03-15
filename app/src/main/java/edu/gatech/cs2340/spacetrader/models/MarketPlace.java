@@ -1,11 +1,14 @@
 package edu.gatech.cs2340.spacetrader.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class MarketPlace {
+public class MarketPlace implements Parcelable {
     HashMap<Resources, Double> buyMap = new HashMap<>();
     HashMap<Resources, Double> sellMap = new HashMap<>();
     HashMap<Resources, Integer> quantMap = new HashMap<>();
@@ -27,6 +30,26 @@ public class MarketPlace {
         calculateBuyPrice(priceRes);
         calculateSellPrice(priceRes);
     }
+
+    protected MarketPlace(Parcel in) {
+        solar = in.readParcelable(SolarSystem.class.getClassLoader());
+        buyMap = (HashMap<Resources, Double>) in.readSerializable();
+        sellMap = (HashMap<Resources, Double>) in.readSerializable();
+        quantMap = (HashMap<Resources, Integer>) in.readSerializable();
+        priceRes = (PriceResources) in.readSerializable();
+    }
+
+    public static final Creator<MarketPlace> CREATOR = new Creator<MarketPlace>() {
+        @Override
+        public MarketPlace createFromParcel(Parcel in) {
+            return new MarketPlace(in);
+        }
+
+        @Override
+        public MarketPlace[] newArray(int size) {
+            return new MarketPlace[size];
+        }
+    };
 
     public void display() {
         String column1 = "Resource(s)";
@@ -97,7 +120,7 @@ public class MarketPlace {
                 increase = change.getIncrease();
             }
         }
-        System.out.println("Increase: " + increase);
+//        System.out.println("Increase: " + increase);
         for (Resources item : buyMap.keySet()) {
             double price = (item.getBasePrice()) + (item.getIPL() *
                     (solar.getTechLevel().getValue() - item.getMTLP())) + (item.getVariance());
@@ -106,7 +129,7 @@ public class MarketPlace {
                     item.geteR().equals(change.getTypePrice())) {
                     price = price * increase;
             }
-            System.out.println("Price: " + price);
+//            System.out.println("Price: " + price);
             buyMap.put(item, price);
         }
     }
@@ -147,12 +170,27 @@ public class MarketPlace {
         }
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(solar, flags);
+        dest.writeSerializable(buyMap);
+        dest.writeSerializable(sellMap);
+        dest.writeSerializable(quantMap);
+        dest.writeSerializable(priceRes);
+    }
+
 //    public static void main(String[] args) {
 //        SolarSystem solar = new SolarSystem("Tu", 2, 3, TechLevel.Agriculture, PriceResources.Cold);
 //        MarketPlace market = new MarketPlace(solar, solar.getPriceResources());
 //        player player = new player("New player", gameDifficulty.Beginner);
-//        market.buy(player, Resources.Water, player.getShip().getCargoStorage(), 1, solar.getPriceResources());
-//        market.sell(player, Resources.Ore, player.getShip().getCargoStorage(), 1, solar.getPriceResources());
+//        market.buy(player, Resources.Water, player.getShip().getCargoStorage(), 10, solar.getPriceResources());
+//        market.sell(player, Resources.Water, player.getShip().getCargoStorage(), 5, solar.getPriceResources());
+//        market.buy(player, Resources.Water, player.getShip().getCargoStorage(), 8, solar.getPriceResources());
 //        market.display();
 //    }
 }

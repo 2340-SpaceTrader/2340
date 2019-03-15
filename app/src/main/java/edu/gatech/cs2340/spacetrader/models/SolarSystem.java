@@ -1,6 +1,9 @@
 package edu.gatech.cs2340.spacetrader.models;
 
-public class SolarSystem {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class SolarSystem implements Parcelable {
     private String name;
     private int x;
     private int y;
@@ -18,6 +21,26 @@ public class SolarSystem {
         this.techLevel = techLevel;
         this.resources = resources;
     }
+
+    protected SolarSystem(Parcel in) {
+        name = in.readString();
+        x = in.readInt();
+        y = in.readInt();
+        techLevel = (TechLevel) in.readSerializable();
+        resources = (PriceResources) in.readSerializable();
+    }
+
+    public static final Creator<SolarSystem> CREATOR = new Creator<SolarSystem>() {
+        @Override
+        public SolarSystem createFromParcel(Parcel in) {
+            return new SolarSystem(in);
+        }
+
+        @Override
+        public SolarSystem[] newArray(int size) {
+            return new SolarSystem[size];
+        }
+    };
 
     public void setName(String name) {
         this.name = name;
@@ -64,4 +87,17 @@ public class SolarSystem {
         return String.format("Solar System Name: %s \n At position: (%d, %d) \n Tech Level: %s \n Resources: %s", name, x, y, techLevel.getName(), resources);
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeInt(x);
+        dest.writeInt(y);
+        dest.writeSerializable(techLevel);
+        dest.writeSerializable(resources);
+    }
 }

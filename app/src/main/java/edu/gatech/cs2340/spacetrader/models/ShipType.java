@@ -1,6 +1,8 @@
 package edu.gatech.cs2340.spacetrader.models;
 
-public enum ShipType {
+import java.io.Serializable;
+
+public enum ShipType implements Serializable {
 
     GnatSpaceShip("GnatSpaceShip", 10);
 
