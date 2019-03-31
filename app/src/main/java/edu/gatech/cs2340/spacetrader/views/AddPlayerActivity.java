@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import edu.gatech.cs2340.spacetrader.MainActivity;
 import edu.gatech.cs2340.spacetrader.R;
+import edu.gatech.cs2340.spacetrader.models.MarketPlace;
 import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.gameDifficulty;
@@ -31,11 +32,15 @@ public class AddPlayerActivity extends AppCompatActivity {
     private EditText fighterPts;
     private Spinner difficultySpinner;
     private player player;
+    private MarketPlace marketPlace;
+    private SolarSystem planet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_player);
+
+        getIncomingIntent();
 
         name = findViewById(R.id.player_name);
         pilotPts = findViewById(R.id.pilot_point);
@@ -50,6 +55,8 @@ public class AddPlayerActivity extends AppCompatActivity {
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
 
+        player = new player(name.getText().toString(), (gameDifficulty) difficultySpinner.getSelectedItem());
+
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +68,6 @@ public class AddPlayerActivity extends AppCompatActivity {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player = new player(name.getText().toString(), (gameDifficulty) difficultySpinner.getSelectedItem());
                 ArrayList<Integer> playerPts = new ArrayList<>(4);
                 if(name.length() == 0 || pilotPts.length() == 0
                         || fighterPts.length() == 0 || traderPts.length() == 0
@@ -92,10 +98,32 @@ public class AddPlayerActivity extends AppCompatActivity {
                 }
                 System.out.println(player.toString());
                 Intent intent = new Intent(AddPlayerActivity.this, PlayingActivity.class);
+                intent.putExtra("player", player);
+                intent.putExtra("marketPlace", marketPlace);
+                intent.putExtra("planet", planet);
                 startActivity(intent);
             }
         });
 
     }
 
+    public player getPlayer() {
+        return player;
+    }
+
+    private void getIncomingIntent() {
+//        System.out.println("aaaaaaaaaaaasdasdasssssss");
+        if (getIntent().hasExtra("player")) {
+            player = getIntent().getParcelableExtra("player");
+//            Log.d("receive Player", player.toString());
+        }
+        if (getIntent().hasExtra("marketPlace")) {
+            marketPlace = getIntent().getParcelableExtra("marketPlace");
+//            Log.d("receive marketPlace", "marketPlace hello");
+        }
+//        if (getIntent().hasExtra("planet")) {
+//            planet = getIntent().getParcelableExtra("planet");
+////            Log.d("receive planet", "planet hello");
+//        }
+    }
 }

@@ -6,16 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="288dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="192dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Starting game, please wait....."
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/market_button"
+        android:layout_width="157dp"
+        android:layout_height="81dp"
+        android:text="Market Place"
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="108dp" />
 </android.support.constraint.ConstraintLayout>

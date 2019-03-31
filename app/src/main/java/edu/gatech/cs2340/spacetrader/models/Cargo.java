@@ -1,41 +1,71 @@
 package edu.gatech.cs2340.spacetrader.models;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-//package edu.gatech.cs2340.lab3newcomponents.entity;
 
-public class Cargo {
-    public Cargo(int spaceCapacity) {
-        this.spaceCapacity = spaceCapacity;
-        cargo = new HashMap<>();
-    }
+public class Cargo implements Parcelable {
 
-    private final int hashsize = 16;
+
     private int spaceCapacity;
     private int size;
     private HashMap<Resources, Integer> cargo;
 
-    private int hashValue(Integer key) {
-        return Math.abs(key.hashCode() % hashsize);
+    public Cargo(int spaceCapacity) {
+        this.spaceCapacity = spaceCapacity;
+        size = 0;
+        cargo = new HashMap<>();
     }
 
+    protected Cargo(Parcel in) {
+        spaceCapacity = in.readInt();
+        size = in.readInt();
+        cargo = (HashMap<Resources, Integer>) in.readSerializable();
+    }
+
+    public static final Creator<Cargo> CREATOR = new Creator<Cargo>() {
+        @Override
+        public Cargo createFromParcel(Parcel in) {
+            return new Cargo(in);
+        }
+
+        @Override
+        public Cargo[] newArray(int size) {
+            return new Cargo[size];
+        }
+    };
+
     public void addCargo(Resources item, int count) {
-        if ((occupiedSpace() + count) > spaceCapacity) {
+
+//        System.out.println("Space: " + occupiedSpace());
+        if ((size + count) > spaceCapacity) {
             throw new IllegalArgumentException("Your input surpass the space capacity");
         }
         if (count <= 0) {
             throw new IllegalArgumentException("Invalid input");
         }
-        if (cargo.keySet().contains(item)) {
-            int a = cargo.get(item);
-            a += count;
-            cargo.put(item, a);
-        } else {
-            cargo.putIfAbsent(item, count);
-        }
+
+        cargo.putIfAbsent(item, 0);
+        cargo.put(item, cargo.get(item) + count);
+        size += count;
+
+//        if (cargo.keySet().contains(item)) {
+//            int a = cargo.get(item);
+//            a += count;
+//            cargo.put(item, a);
+//            size += count;
+//        } else {
+//            cargo.putIfAbsent(item, count);
+//            size += count;
+//        }
 
     }
 
     public void removeCargo(Resources item, int count) {
+
+//        System.out.println("Space: " + occupiedSpace());
         if (count <= 0) {
              throw new IllegalArgumentException("Invalid input");
         }
@@ -43,12 +73,10 @@ public class Cargo {
             throw new java.util.NoSuchElementException("The item does not exists");
         }
         if (cargo.get(item) < count) {
-            throw new IllegalArgumentException("Cannot remove more than the amount of item in the cargo");
+            throw new IllegalArgumentException("Cannot sell more than the amount of item in the cargo");
         }
-        int a = cargo.get(item);
-        a -= count;
-        cargo.put(item, a);
-
+        cargo.put(item, cargo.get(item) - count);
+        size -= count;
     }
     private ArrayList<String> displayCargo() {
         ArrayList<String> list = new ArrayList<>();
@@ -73,4 +101,15 @@ public class Cargo {
         return spaceCapacity;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(spaceCapacity);
+        dest.writeInt(size);
+        dest.writeSerializable(cargo);
+    }
 }

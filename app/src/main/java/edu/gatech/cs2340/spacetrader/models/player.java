@@ -1,15 +1,21 @@
 package edu.gatech.cs2340.spacetrader.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class player {
+public class player implements Parcelable {
     private String name;
     private int skillPoints;
-    private int credits;
+    private double credits;
     private Ship ship;
     private gameDifficulty gameDifficulty;
     private ArrayList SPAllocation;
+
+
 
     /**
      * Constructor of a player
@@ -17,15 +23,37 @@ public class player {
      * @param gameDifficulty
      */
 
+    public player(String name, gameDifficulty gameDifficulty)
 
-    public player(String name, gameDifficulty gameDifficulty) {
+    {
         this.name = name;
         this.gameDifficulty = gameDifficulty;
         skillPoints = 16;
-        credits =1000;
+        credits = 1000.0;
         ship = new Ship();
         SPAllocation = new ArrayList<Integer>(4);
     }
+
+    protected player(Parcel in) {
+        name = in.readString();
+        skillPoints = in.readInt();
+        credits = in.readDouble();
+        ship = in.readParcelable(Ship.class.getClassLoader());
+        gameDifficulty = (gameDifficulty) in.readSerializable();
+        SPAllocation = (ArrayList<Integer>) in.readSerializable();
+    }
+
+    public static final Creator<player> CREATOR = new Creator<player>() {
+        @Override
+        public player createFromParcel(Parcel in) {
+            return new player(in);
+        }
+
+        @Override
+        public player[] newArray(int size) {
+            return new player[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -43,7 +71,7 @@ public class player {
         return SPAllocation;
     }
 
-    public int getCredits() {
+    public double getCredits() {
         return credits;
     }
 
@@ -69,6 +97,9 @@ public class player {
         SPAllocation = list;
     }
 
+    public void setCredits(double credits) {
+        this.credits = credits;
+    }
     /**
      * To check for negative and number bigger than 16
      * @param list
@@ -105,9 +136,24 @@ public class player {
     @Override
     public String toString() {
         return String.format("Player's name: %s \n Game mode: %s \n " +
-                "Credits: %d \n ShipType: %s \n" +
+                "Credits: %f \n ShipType: %s \n" +
                 " Pilot points: %d \n Fighter points: %d \n Trader points: %d \n Engineer points: %d \n"
                 , name, gameDifficulty.toString(), credits, ship.getShipType().getShipName(), SPAllocation.get(0), SPAllocation.get(1),
                 SPAllocation.get(2), SPAllocation.get(3));
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeInt(skillPoints);
+        dest.writeDouble(credits);
+        dest.writeParcelable(ship, flags);
+        dest.writeSerializable(gameDifficulty);
+        dest.writeSerializable(SPAllocation);
     }
 }

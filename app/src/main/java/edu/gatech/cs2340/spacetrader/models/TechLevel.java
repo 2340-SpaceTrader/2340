@@ -1,6 +1,8 @@
 package edu.gatech.cs2340.spacetrader.models;
 
-public enum TechLevel {
+import java.io.Serializable;
+
+public enum TechLevel implements Serializable {
     PreAgriculture("Pre-Agriculture", 0),
     Agriculture("Agriculture", 1),
     Medieval("Medieval", 2),
@@ -24,4 +26,5 @@ public enum TechLevel {
     public int getValue() {
         return value;
     }
+
 }

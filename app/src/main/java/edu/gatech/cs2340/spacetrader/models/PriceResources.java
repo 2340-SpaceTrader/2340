@@ -1,30 +1,36 @@
 package edu.gatech.cs2340.spacetrader.models;
 
-public enum PriceResources {
+import java.io.Serializable;
+
+public enum PriceResources implements Serializable {
     //expesive
-    Desert("Expensive", 5.0),
-    Lifeless("Expensive", 5.0),
-    PoorSoil("Expensive", 5.0),
-    MineralPoor("Expensive", 5.0),
+    Desert("Desert", 5.0),
+    Lifeless("Lifeless", 5.0),
+    PoorSoil("PoorSoil", 5.0),
+    MineralPoor("MineralPoor", 5.0),
 
     //cheap
-    LotsOfWater("Cheap", 0.5),
-    RichFauna("Cheap", 0.5),
-    RichSoil("Cheap", 0.5),
-    MineralRich("Cheap", 0.5),
-    Artistic("Cheap", 0.5),
-    Warlike("Cheap", 0.5),
-    LotsOfHerbs("Cheap", 0.5),
-    WeirdMushrooms("Cheap", 0.5),
+    LotsOfWater("LotsOfWater", 0.5),
+    RichFauna("RichFauna", 0.5),
+    RichSoil("RichSoil", 0.5),
+    MineralRich("MineralRich", 0.5),
+    Artistic("Artistic", 0.5),
+    Warlike("Warlike", 0.5),
+    LotsOfHerbs("LotsOfHerbs", 0.5),
+    WeirdMushrooms("WeirdMushrooms", 0.5),
 
     //increase event
-    Drought("Super Expensive", 10.0),
-    Cold("Super Expensive", 10.0),
-    Cropfailure("Super Expensive", 10.0),
-    War("Super Expensive", 10.0),
-    Boredom("Super Expensive", 10.0),
-    Plague("Super Expensive", 10.0),
-    Lackofworkers("Super Expensive", 10.0);
+    Drought("Drought", 10.0),
+    Cold("Cold", 10.0),
+    Cropfailure("Cropfailure", 10.0),
+    War("War", 10.0),
+    Boredom("Boredom", 10.0),
+    Plague("Plague", 10.0),
+    Lackofworkers("Lackofworkers", 10.0),
+
+    //Never
+    Never("Nonspecialresources", 1.0);
+
     String typePrice;
     double increase;
 
