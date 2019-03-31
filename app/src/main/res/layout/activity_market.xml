@@ -11,11 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="588dp"
+        android:layout_marginTop="432dp"
         android:layout_marginEnd="108dp"
         android:text="Buy item(s)"
         app:layout_constraintEnd_toStartOf="@+id/sell_button"
-        app:layout_constraintHorizontal_bias="0.379"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,13 +23,23 @@
         android:id="@+id/sell_button"
         android:layout_width="113dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="588dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="432dp"
+        android:layout_marginEnd="40dp"
         android:text="Sell Item(s)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="305dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="24dp"
+        android:text="MARKET PLACE"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="64dp"
+        tools:ignore="MissingConstraints" />
 
 
 </android.support.constraint.ConstraintLayout>
