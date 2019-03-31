@@ -40,7 +40,7 @@ public class AddPlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_player);
 
-        getIncomingIntent();
+//        getIncomingIntent();
 
         name = findViewById(R.id.player_name);
         pilotPts = findViewById(R.id.pilot_point);
@@ -111,19 +111,19 @@ public class AddPlayerActivity extends AppCompatActivity {
         return player;
     }
 
-    private void getIncomingIntent() {
-//        System.out.println("aaaaaaaaaaaasdasdasssssss");
-        if (getIntent().hasExtra("player")) {
-            player = getIntent().getParcelableExtra("player");
-//            Log.d("receive Player", player.toString());
-        }
-        if (getIntent().hasExtra("marketPlace")) {
-            marketPlace = getIntent().getParcelableExtra("marketPlace");
-//            Log.d("receive marketPlace", "marketPlace hello");
-        }
+//    private void getIncomingIntent() {
+////        System.out.println("aaaaaaaaaaaasdasdasssssss");
+//        if (getIntent().hasExtra("player")) {
+//            player = getIntent().getParcelableExtra("player");
+////            Log.d("receive Player", player.toString());
+//        }
+//        if (getIntent().hasExtra("marketPlace")) {
+//            marketPlace = getIntent().getParcelableExtra("marketPlace");
+////            Log.d("receive marketPlace", "marketPlace hello");
+//        }
 //        if (getIntent().hasExtra("planet")) {
 //            planet = getIntent().getParcelableExtra("planet");
 ////            Log.d("receive planet", "planet hello");
 //        }
-    }
+//    }
 }

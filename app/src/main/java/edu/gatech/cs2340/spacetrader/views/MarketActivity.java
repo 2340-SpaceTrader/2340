@@ -41,8 +41,11 @@ public class MarketActivity extends AppCompatActivity {
 //        items = findViewById(R.id.items_text;
 //        name = findViewById(R.id.name.text);
 //        count =
+//        items = findViewById(R.id.items_text);
         Button buyButton = findViewById(R.id.buy_button);
         Button sellButton = findViewById(R.id.sell_button);
+
+//        items.setText(marketPlace.display());
 
         sellButton.setOnClickListener(new View.OnClickListener() {
             @Override
