@@ -6,6 +6,8 @@ import android.os.Parcelable;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
+
 
 public class player implements Parcelable {
     private String name;
@@ -14,8 +16,8 @@ public class player implements Parcelable {
     private Ship ship;
     private gameDifficulty gameDifficulty;
     private ArrayList SPAllocation;
-
-
+    private double fuel;
+    private SolarSystem planet;
 
     /**
      * Constructor of a player
@@ -31,7 +33,11 @@ public class player implements Parcelable {
         skillPoints = 16;
         credits = 1000.0;
         ship = new Ship();
+        fuel = 200.0;
         SPAllocation = new ArrayList<Integer>(4);
+        CreateUniverse universe = new CreateUniverse();
+        ArrayList<SolarSystem> solarList = new ArrayList<>(universe.create());
+        planet = solarList.get(0);
     }
 
     protected player(Parcel in) {
@@ -39,7 +45,9 @@ public class player implements Parcelable {
         skillPoints = in.readInt();
         credits = in.readDouble();
         ship = in.readParcelable(Ship.class.getClassLoader());
+        fuel = in.readDouble();
         gameDifficulty = (gameDifficulty) in.readSerializable();
+        planet = in.readParcelable(SolarSystem.class.getClassLoader());
         SPAllocation = (ArrayList<Integer>) in.readSerializable();
     }
 
@@ -75,10 +83,29 @@ public class player implements Parcelable {
         return credits;
     }
 
+    public double getFuel() {
+        return fuel;
+    }
 
     public Ship getShip() {
         return ship;
 
+    }
+
+    public SolarSystem getPlanet() {
+        return planet;
+    }
+
+    public void setPlanet(SolarSystem planet) {
+        this.planet = planet;
+    }
+
+    public void setShip(Ship ship) {
+        this.ship = ship;
+    }
+
+    public void setFuel(double fuel) {
+        this.fuel = fuel;
     }
 
     public void setName(String name) {
@@ -153,7 +180,9 @@ public class player implements Parcelable {
         dest.writeInt(skillPoints);
         dest.writeDouble(credits);
         dest.writeParcelable(ship, flags);
+        dest.writeDouble(fuel);
         dest.writeSerializable(gameDifficulty);
+        dest.writeParcelable(planet, flags);
         dest.writeSerializable(SPAllocation);
     }
 }

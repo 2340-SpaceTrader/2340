@@ -51,17 +51,39 @@ public class MarketPlace implements Parcelable {
         }
     };
 
-    public void display() {
-        String column1 = "Resource(s)";
-        String column2 = "Price";
-        String column3 = "Quanitity";
-        System.out.printf("%-20s %-20s %s%n", column1, column2, column3);
+    public String displayType() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Resource(s)");
+        sb.append("\n\n");
         for (Resources res : buyMap.keySet()) {
-            System.out.printf("%-20s %-20.2f %d%n", res.getType(), buyMap.get(res), quantMap.get(res));
+            sb.append(res.getType());
+            sb.append("\n");
         }
-//        for (Resources res : sellMap.keySet()) {
-//            System.out.printf("%-20s %-20.2f %d%n", res.getType(), sellMap.get(res), quantMap.get(res));
-//        }
+        return sb.toString();
+    }
+
+    public String displayPrice() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Price");
+        sb.append("\n\n");
+        for (Resources res : buyMap.keySet()) {
+            sb.append(buyMap.get(res));
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    public String displayQuant() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Quantity");
+        sb.append("\n\n");
+        //System.out.printf("%-20s %-20s %s%n", column1, column2, column3);
+        for (Resources res : buyMap.keySet()) {
+            //System.out.printf("%-20s %-20.2f %d%n", res.getType(), buyMap.get(res), quantMap.get(res));
+            sb.append(quantMap.get(res));
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 
     public Cargo sell(player player, Resources res, Cargo cargo, int count, PriceResources priceRes) {
@@ -83,11 +105,6 @@ public class MarketPlace implements Parcelable {
     public Cargo buy(player player, Resources res, Cargo cargo, int count, PriceResources priceRes) {
         if (solar.getTechLevel().getValue() >= res.getMTLP()) {
             calculateBuyPrice(priceRes);
-//        System.out.println("Buy Set: " + buyMap.keySet());
-//        System.out.println("Water Cost: " + buyMap.get(Resources.Water));
-//        System.out.println("Sell Set: " + sellMap.keySet());
-//        System.out.println("Credits: " + player.getCredits());
-//        System.out.println(quantMap.get(Resources.Water));
             cargo.addCargo(res, count);
             if (buyMap.keySet().contains(res) && player.getCredits() >= buyMap.get(res)) {
                 if (count > quantMap.get(res)) {
@@ -109,9 +126,6 @@ public class MarketPlace implements Parcelable {
     public void calculateBuyPrice(PriceResources change) {
         double increase = 1.0;
         for (Resources res : Arrays.asList(Resources.values())) {
-//            System.out.println("Check: " + res);
-//            System.out.println("Check: " + res.getiE());
-//            System.out.println("Check: " + change.getTypePrice());
             if (res.getiE().equals(change.getTypePrice())) {
                 increase = change.getIncrease();
             } else if (res.getcR().equals(change.getTypePrice())) {
@@ -120,7 +134,6 @@ public class MarketPlace implements Parcelable {
                 increase = change.getIncrease();
             }
         }
-//        System.out.println("Increase: " + increase);
         for (Resources item : buyMap.keySet()) {
             double price = (item.getBasePrice()) + (item.getIPL() *
                     (solar.getTechLevel().getValue() - item.getMTLP())) + (item.getVariance());
@@ -129,7 +142,6 @@ public class MarketPlace implements Parcelable {
                     item.geteR().equals(change.getTypePrice())) {
                     price = price * increase;
             }
-//            System.out.println("Price: " + price);
             buyMap.put(item, price);
         }
     }
@@ -155,16 +167,10 @@ public class MarketPlace implements Parcelable {
 
     public void quantityTechLevel(SolarSystem solar) {
         List<Resources> list = Arrays.asList(Resources.values());
-
-//        System.out.println(Arrays.toString(list));
-//        System.out.println(solar.getTechLevel().getValue());
         for (Resources res : list) {
-//            System.out.println(res.getTTP());
-
             if (res.getTTP() == solar.getTechLevel().getValue()) {
                 quantMap.putIfAbsent(res, 50);
             } else {
-//                System.out.println(res);
                 quantMap.putIfAbsent(res, 10);
             }
         }
@@ -184,13 +190,4 @@ public class MarketPlace implements Parcelable {
         dest.writeSerializable(priceRes);
     }
 
-//    public static void main(String[] args) {
-//        SolarSystem solar = new SolarSystem("Tu", 2, 3, TechLevel.Agriculture, PriceResources.Cold);
-//        MarketPlace market = new MarketPlace(solar, solar.getPriceResources());
-//        player player = new player("New player", gameDifficulty.Beginner);
-//        market.buy(player, Resources.Water, player.getShip().getCargoStorage(), 10, solar.getPriceResources());
-//        market.sell(player, Resources.Water, player.getShip().getCargoStorage(), 5, solar.getPriceResources());
-//        market.buy(player, Resources.Water, player.getShip().getCargoStorage(), 8, solar.getPriceResources());
-//        market.display();
-//    }
 }

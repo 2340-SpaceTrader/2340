@@ -101,6 +101,8 @@ public class Cargo implements Parcelable {
         return spaceCapacity;
     }
 
+    public int getSize() {return size;}
+
     @Override
     public int describeContents() {
         return 0;

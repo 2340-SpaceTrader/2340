@@ -55,7 +55,7 @@ public class AddPlayerActivity extends AppCompatActivity {
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
 
-        player = new player(name.getText().toString(), (gameDifficulty) difficultySpinner.getSelectedItem());
+
 
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +68,7 @@ public class AddPlayerActivity extends AppCompatActivity {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                player = new player(name.getText().toString(), (gameDifficulty) difficultySpinner.getSelectedItem());
                 ArrayList<Integer> playerPts = new ArrayList<>(4);
                 if(name.length() == 0 || pilotPts.length() == 0
                         || fighterPts.length() == 0 || traderPts.length() == 0
@@ -111,19 +112,5 @@ public class AddPlayerActivity extends AppCompatActivity {
         return player;
     }
 
-//    private void getIncomingIntent() {
-////        System.out.println("aaaaaaaaaaaasdasdasssssss");
-//        if (getIntent().hasExtra("player")) {
-//            player = getIntent().getParcelableExtra("player");
-////            Log.d("receive Player", player.toString());
-//        }
-//        if (getIntent().hasExtra("marketPlace")) {
-//            marketPlace = getIntent().getParcelableExtra("marketPlace");
-////            Log.d("receive marketPlace", "marketPlace hello");
-//        }
-//        if (getIntent().hasExtra("planet")) {
-//            planet = getIntent().getParcelableExtra("planet");
-////            Log.d("receive planet", "planet hello");
-//        }
-//    }
+
 }

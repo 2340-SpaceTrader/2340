@@ -84,7 +84,7 @@ public class SolarSystem implements Parcelable {
 
     @Override
     public String toString() {
-        return String.format("Solar System Name: %s \n At position: (%d, %d) \n Tech Level: %s \n Resources: %s", name, x, y, techLevel.getName(), resources);
+        return String.format("Planet Name: %s \n At: (%d, %d)", name, x, y);
     }
 
     @Override
