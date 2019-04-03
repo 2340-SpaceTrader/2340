@@ -22,6 +22,7 @@
         <activity android:name=".views.MarketActivity"/>
         <activity android:name=".views.BuyActivity"/>
         <activity android:name=".views.SellActivity"/>
+        <activity android:name=".views.TravelActivity"/>
     </application>
 
 </manifest>

@@ -102,6 +102,7 @@ public class AddPlayerActivity extends AppCompatActivity {
                 intent.putExtra("player", player);
                 intent.putExtra("marketPlace", marketPlace);
                 intent.putExtra("planet", planet);
+                intent.putExtra("solarList", solarList );
                 startActivity(intent);
             }
         });

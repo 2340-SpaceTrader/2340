@@ -91,7 +91,7 @@ public class MarketPlace implements Parcelable {
             calculateSellPrice(priceRes);
             cargo.removeCargo(res, count);
             if (buyMap.keySet().contains(res)) {
-                player.setCredits(player.getCredits() + sellMap.get(res));
+                player.setCredits(player.getCredits() + sellMap.get(res)*count);
                 quantMap.put(res, quantMap.get(res) + count);
             } else {
                 throw new NoSuchElementException("Cannot sell input resource on this planet");
@@ -105,14 +105,15 @@ public class MarketPlace implements Parcelable {
     public Cargo buy(player player, Resources res, Cargo cargo, int count, PriceResources priceRes) {
         if (solar.getTechLevel().getValue() >= res.getMTLP()) {
             calculateBuyPrice(priceRes);
-            cargo.addCargo(res, count);
-            if (buyMap.keySet().contains(res) && player.getCredits() >= buyMap.get(res)) {
+
+            if (buyMap.keySet().contains(res) && player.getCredits() >= buyMap.get(res)*count) {
                 if (count > quantMap.get(res)) {
                     throw new IllegalArgumentException("Insufficient resource to buy");
                 }
-                player.setCredits(player.getCredits() - buyMap.get(res));
+                cargo.addCargo(res, count);
+                player.setCredits(player.getCredits() - buyMap.get(res)*count);
                 quantMap.put(res, quantMap.get(res) - count);
-            } else if (player.getCredits() < buyMap.get(res)) {
+            } else if (player.getCredits() < buyMap.get(res)*count) {
                 throw new IllegalArgumentException("Not enough credits");
             } else {
                 throw new NoSuchElementException("The resource is not available");

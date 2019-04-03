@@ -20,10 +20,10 @@ import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
 import edu.gatech.cs2340.spacetrader.viewmodel.Travel;
 
 public class TravelActivity extends AppCompatActivity {
-    private Spinner difficultySpinner;
+    private Spinner spinner;
     private player player;
     private Travel go;
-    ArrayList<SolarSystem> list;
+    ArrayList<SolarSystem> solarList;
     private MarketPlace marketPlace;
 
     @Override
@@ -32,20 +32,20 @@ public class TravelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_travel);
         getIncomingIntent();
 
-        difficultySpinner = findViewById(R.id.travel_spinner);
+        spinner = findViewById(R.id.travel_spinner);
         Button ok = findViewById(R.id.ok_button);
         Button back = findViewById(R.id.back_button);
-        CreateUniverse universe = new CreateUniverse();
-        final ArrayAdapter<SolarSystem> difficultyAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, universe.create());
-        difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        difficultySpinner.setAdapter(difficultyAdapter);
+        final CreateUniverse universe = new CreateUniverse();
+        final ArrayAdapter<SolarSystem> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, universe.create());
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 go = new Travel();
                 try {
-                    go.travel(player, (SolarSystem) difficultySpinner.getSelectedItem());
+                    go.travel(player, (SolarSystem) spinner.getSelectedItem());
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -63,8 +63,7 @@ public class TravelActivity extends AppCompatActivity {
                 Intent intent = new Intent(TravelActivity.this, PlayingActivity.class);
                 intent.putExtra("player", player);
                 intent.putExtra("marketPlace", marketPlace);
-//                intent.putExtra("planet", planet);
-                intent.putExtra("list", list);
+                intent.putExtra("solarList", solarList);
                 startActivity(intent);
             }
         });
@@ -78,11 +77,11 @@ public class TravelActivity extends AppCompatActivity {
         if (getIntent().hasExtra("marketPlace")) {
             marketPlace = getIntent().getParcelableExtra("marketPlace");
         }
-//        if (getIntent().hasExtra("planet")) {
-//            planet = getIntent().getParcelableExtra("planet");
+//        if (getIntent().hasExtra("universe")) {
+//            universe = getIntent().getParcelableExtra("universe");
 //        }
         if (getIntent().hasExtra("list")) {
-            list = getIntent().getParcelableExtra("list");
+            solarList = getIntent().getParcelableExtra("solarList");
         }
     }
 }

@@ -23,7 +23,7 @@ public class PlayingActivity extends AppCompatActivity {
     MarketPlace marketPlace;
     SolarSystem planet;
     private player player;
-    ArrayList<SolarSystem> list;
+    ArrayList<SolarSystem> solarList;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playing);
@@ -42,8 +42,8 @@ public class PlayingActivity extends AppCompatActivity {
         travel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final CreateUniverse universe = new CreateUniverse();
-                final ArrayList<SolarSystem> list = new ArrayList<>(universe.create());
+//                final CreateUniverse universe = new CreateUniverse();
+//                final ArrayList<SolarSystem> list = new ArrayList<>(universe.create());
 
 //                Bundle extra = new Bundle();
 //                extra.putSerializable("list", list);
@@ -54,7 +54,7 @@ public class PlayingActivity extends AppCompatActivity {
                 planet = player.getPlanet();
                 Intent intent = new Intent(PlayingActivity.this, TravelActivity.class);
                 intent.putExtra("player", player);
-//                intent.putExtra("list", list);
+                intent.putExtra("solarList", solarList);
                 startActivity(intent);
             }
         });
@@ -86,6 +86,9 @@ public class PlayingActivity extends AppCompatActivity {
         }
         if (getIntent().hasExtra("planet")) {
             planet = getIntent().getParcelableExtra("planet");
+        }
+        if (getIntent().hasExtra("solarList")) {
+            solarList = getIntent().getParcelableExtra("solarList");
         }
     }
 }

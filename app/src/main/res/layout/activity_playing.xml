@@ -7,10 +7,43 @@
     android:layout_height="match_parent">
 
     <Button
+        android:id="@+id/travel_button"
+        android:layout_width="140dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="8dp"
+        android:text="Travel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player_status"
+        app:layout_constraintVertical_bias="0.115" />
+
+    <Button
         android:id="@+id/market_button"
-        android:layout_width="157dp"
-        android:layout_height="81dp"
+        android:layout_width="140dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="8dp"
         android:text="Market Place"
-        tools:layout_editor_absoluteX="127dp"
-        tools:layout_editor_absoluteY="108dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player_status"
+        app:layout_constraintVertical_bias="0.115" />
+
+    <TextView
+        android:id="@+id/player_status"
+        android:layout_width="241dp"
+        android:layout_height="281dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        android:gravity="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
