@@ -46,12 +46,15 @@ public class TravelActivity extends AppCompatActivity {
                 go = new Travel();
                 try {
                     go.travel(player, (SolarSystem) spinner.getSelectedItem());
+                    if (go.getRand() < 0.8) {
+                        Toast.makeText(getApplicationContext(), "This random event happened: " + go.getEvent(),Toast.LENGTH_LONG).show();
+                    }
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 Intent intent = new Intent(TravelActivity.this, PlayingActivity.class);
                 intent.putExtra("player", player);
-//                intent.putExtra("marketPlace", marketPlace);
+//                intent.putExtra("go", go);
 //                intent.putExtra("planet", planet);
                 startActivity(intent);
             }

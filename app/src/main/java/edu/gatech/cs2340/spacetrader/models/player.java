@@ -33,7 +33,7 @@ public class player implements Parcelable {
         skillPoints = 16;
         credits = 1000.0;
         ship = new Ship();
-        fuel = 200.0;
+        fuel = 1000.0;
         SPAllocation = new ArrayList<Integer>(4);
         CreateUniverse universe = new CreateUniverse();
         ArrayList<SolarSystem> solarList = new ArrayList<>(universe.create());

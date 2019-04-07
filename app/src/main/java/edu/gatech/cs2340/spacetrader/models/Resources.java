@@ -45,6 +45,7 @@ public enum Resources implements Serializable {
     this.mTH = mTH;
     }
 
+
     public String getType() {
         return type;
     }

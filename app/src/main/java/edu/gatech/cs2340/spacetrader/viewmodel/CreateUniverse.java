@@ -74,6 +74,14 @@ public class CreateUniverse implements Parcelable {
         resourcesList.add(PriceResources.LotsOfHerbs);
         resourcesList.add(PriceResources.Artistic);
         resourcesList.add(PriceResources.Warlike);
+        resourcesList.add(PriceResources.Drought);
+        resourcesList.add(PriceResources.Cold);
+        resourcesList.add(PriceResources.Cropfailure);
+        resourcesList.add(PriceResources.War);
+        resourcesList.add(PriceResources.Boredom);
+        resourcesList.add(PriceResources.Plague);
+        resourcesList.add(PriceResources.Lackofworkers);
+
 
         ArrayList<Integer> arrayListX = new ArrayList<>();
         while (arrayListX.size() < 10) {
@@ -103,7 +111,7 @@ public class CreateUniverse implements Parcelable {
             int y = arrayListY.get(i);
             String name = solarName.get(i);
             TechLevel techLevel = techLevelList.get((int) (Math.random()*techLevelList.size()));
-            PriceResources resources = resourcesList.get((int) (Math.random()*techLevelList.size()));
+            PriceResources resources = resourcesList.get((int) (Math.random()*resourcesList.size()));
             SolarSystem newSolar = new SolarSystem(name, x, y, techLevel, resources);
             solarList.add(newSolar);
         }

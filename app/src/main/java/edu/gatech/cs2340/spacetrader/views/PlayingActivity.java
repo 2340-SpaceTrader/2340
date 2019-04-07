@@ -12,7 +12,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-import edu.gatech.cs2340.spacetrader.MainActivity;
+//import edu.gatech.cs2340.spacetrader.MainActivity;
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.models.MarketPlace;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;

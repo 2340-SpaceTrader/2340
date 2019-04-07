@@ -88,6 +88,7 @@ public class Cargo implements Parcelable {
 
     public void clear() {
         cargo = new HashMap<>();
+        size = 0;
     }
     public int occupiedSpace() {
         int sum = 0;
@@ -102,6 +103,10 @@ public class Cargo implements Parcelable {
     }
 
     public int getSize() {return size;}
+
+    public HashMap getCargo() {
+        return cargo;
+    }
 
     @Override
     public int describeContents() {

@@ -3,12 +3,19 @@ package edu.gatech.cs2340.spacetrader.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
 public class SolarSystem implements Parcelable {
     private String name;
     private int x;
     private int y;
     private TechLevel techLevel;
     private PriceResources resources;
+    private Events event;
+    private Random rand;
 
     public SolarSystem(String name) {
         this.name = name;
@@ -20,6 +27,9 @@ public class SolarSystem implements Parcelable {
         this.y = y;
         this.techLevel = techLevel;
         this.resources = resources;
+        //get list of random events
+        //if(random)
+        //event = random event
     }
 
     protected SolarSystem(Parcel in) {
@@ -80,6 +90,16 @@ public class SolarSystem implements Parcelable {
 
     public PriceResources getPriceResources() {
         return resources;
+    }
+
+    public Events getRandEvent() {
+        List<Events> list = Arrays.asList(Events.values());
+        return list.get((int) (Math.random()*list.size()));
+    }
+
+    public Resources getRandResource() {
+        List<Resources> list = Arrays.asList(Resources.values());
+        return list.get((int) (Math.random()*list.size()));
     }
 
     @Override
