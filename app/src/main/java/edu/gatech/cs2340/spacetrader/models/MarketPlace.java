@@ -8,6 +8,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ * Marketplace for selling and buying
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
 public class MarketPlace implements Parcelable {
     HashMap<Resources, Double> buyMap = new HashMap<>();
     HashMap<Resources, Double> sellMap = new HashMap<>();

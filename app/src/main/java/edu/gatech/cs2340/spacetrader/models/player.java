@@ -8,7 +8,12 @@ import java.util.ArrayList;
 
 import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
 
-
+/**
+ * player info
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
 public class player implements Parcelable {
     private String name;
     private int skillPoints;

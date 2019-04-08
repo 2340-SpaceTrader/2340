@@ -23,7 +23,12 @@ import edu.gatech.cs2340.spacetrader.models.gameDifficulty;
 import edu.gatech.cs2340.spacetrader.models.player;
 import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
 import edu.gatech.cs2340.spacetrader.views.AddPlayerActivity;
-
+/**
+ * Market activity
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
 public class MarketActivity extends AppCompatActivity {
     private EditText items;
     private EditText name;

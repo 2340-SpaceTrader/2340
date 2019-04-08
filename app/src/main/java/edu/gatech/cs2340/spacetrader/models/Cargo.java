@@ -6,6 +6,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Cargo for ship
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
 public class Cargo implements Parcelable {
 
 

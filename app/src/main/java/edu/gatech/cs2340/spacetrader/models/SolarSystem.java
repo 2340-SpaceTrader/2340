@@ -7,7 +7,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
+/**
+ * Solar system class that creates a universe
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
 public class SolarSystem implements Parcelable {
     private String name;
     private int x;
