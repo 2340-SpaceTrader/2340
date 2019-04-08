@@ -41,7 +41,7 @@ public class Cargo implements Parcelable {
 
 //        System.out.println("Space: " + occupiedSpace());
         if ((size + count) > spaceCapacity) {
-            throw new IllegalArgumentException("Your input surpass the space capacity");
+            throw new IllegalArgumentException("Your input surpasses the space capacity");
         }
         if (count <= 0) {
             throw new IllegalArgumentException("Invalid input");
@@ -70,10 +70,10 @@ public class Cargo implements Parcelable {
              throw new IllegalArgumentException("Invalid input");
         }
          if (!cargo.keySet().contains(item)) {
-            throw new java.util.NoSuchElementException("The item does not exists");
+            throw new java.util.NoSuchElementException("The item does not exist");
         }
         if (cargo.get(item) < count) {
-            throw new IllegalArgumentException("Cannot sell more than the amount of item in the cargo");
+            throw new IllegalArgumentException("Cannot sell more than the number of the item in the cargo");
         }
         cargo.put(item, cargo.get(item) - count);
         size -= count;

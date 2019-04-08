@@ -97,7 +97,7 @@ public class MarketPlace implements Parcelable {
                 throw new NoSuchElementException("Cannot sell input resource on this planet");
             }
         } else {
-            throw new IllegalArgumentException("Level Tech of this solar is below the requirement");
+            throw new IllegalArgumentException("This solar system’s tech level is below the requirement");
         }
         return cargo;
     }
@@ -108,7 +108,7 @@ public class MarketPlace implements Parcelable {
 
             if (buyMap.keySet().contains(res) && player.getCredits() >= buyMap.get(res)*count) {
                 if (count > quantMap.get(res)) {
-                    throw new IllegalArgumentException("Insufficient resource to buy");
+                    throw new IllegalArgumentException("Insufficient number of specific resource available for purchase");
                 }
                 cargo.addCargo(res, count);
                 player.setCredits(player.getCredits() - buyMap.get(res)*count);
@@ -119,7 +119,7 @@ public class MarketPlace implements Parcelable {
                 throw new NoSuchElementException("The resource is not available");
             }
         } else {
-            throw new IllegalArgumentException("Level Tech of this solar is below the requirement");
+            throw new IllegalArgumentException("This solar system’s tech level is below the requirement");
         }
         return cargo;
     }
