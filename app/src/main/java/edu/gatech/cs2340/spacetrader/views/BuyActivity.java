@@ -16,7 +16,12 @@ import edu.gatech.cs2340.spacetrader.models.MarketPlace;
 import edu.gatech.cs2340.spacetrader.models.Resources;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.player;
-
+/**
+ * Buy activity
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
 public class BuyActivity extends AppCompatActivity {
 
     private EditText buyCount;

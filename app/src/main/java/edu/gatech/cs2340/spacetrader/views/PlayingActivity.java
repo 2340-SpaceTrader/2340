@@ -18,7 +18,12 @@ import edu.gatech.cs2340.spacetrader.models.MarketPlace;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.player;
 import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
-
+/**
+ * Planet activity
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
 public class PlayingActivity extends AppCompatActivity {
     MarketPlace marketPlace;
     SolarSystem planet;

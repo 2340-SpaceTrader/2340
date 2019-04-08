@@ -18,7 +18,12 @@ import edu.gatech.cs2340.spacetrader.models.gameDifficulty;
 import edu.gatech.cs2340.spacetrader.models.player;
 import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
 import edu.gatech.cs2340.spacetrader.viewmodel.Travel;
-
+/**
+ * travel activity
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
 public class TravelActivity extends AppCompatActivity {
     private Spinner spinner;
     private player player;

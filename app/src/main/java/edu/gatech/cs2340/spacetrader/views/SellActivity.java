@@ -16,7 +16,12 @@ import edu.gatech.cs2340.spacetrader.models.MarketPlace;
 import edu.gatech.cs2340.spacetrader.models.Resources;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.player;
-
+/**
+ * sell activity
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
 public class SellActivity extends AppCompatActivity {
     private EditText sellCount;
     private Spinner SellList;

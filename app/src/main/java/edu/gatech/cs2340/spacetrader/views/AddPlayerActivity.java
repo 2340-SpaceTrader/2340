@@ -22,6 +22,9 @@ import edu.gatech.cs2340.spacetrader.models.player;
 
 /**
  * The Add player page
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
  */
 public class AddPlayerActivity extends AppCompatActivity {
 

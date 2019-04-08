@@ -11,6 +11,9 @@ import edu.gatech.cs2340.spacetrader.WelcomeActivity;
 
 /**
  * The main page
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
  */
 public class MainActivity extends AppCompatActivity {
 
