@@ -112,6 +112,10 @@ public class AddPlayerActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Gets the player
+     * @return player returns the player
+     */
     public player getPlayer() {
         return player;
     }

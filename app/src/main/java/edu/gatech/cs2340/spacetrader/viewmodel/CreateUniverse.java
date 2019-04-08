@@ -22,6 +22,11 @@ public class CreateUniverse implements Parcelable {
     private SolarSystem solarSystem;
 
     private Random rand = new Random();
+
+    /**
+     * Creates the universe
+     *
+     */
     public CreateUniverse() {
     }
 
@@ -41,6 +46,10 @@ public class CreateUniverse implements Parcelable {
         }
     };
 
+    /**
+     * Creates an ArrayList of the SolarSystem
+     *
+     */
     public ArrayList<SolarSystem> create() {
         ArrayList<SolarSystem> solarList = new ArrayList<>();
         ArrayList<String> solarName = new ArrayList<String>();
