@@ -14,6 +14,7 @@ import java.util.NoSuchElementException;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings("ALL")
 public class MarketPlace implements Parcelable {
     HashMap<Resources, Double> buyMap = new HashMap<>();
     HashMap<Resources, Double> sellMap = new HashMap<>();

@@ -3,32 +3,29 @@ package edu.gatech.cs2340.spacetrader.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
+import java.io.Serializable;
 
 //import edu.gatech.cs2340.spacetrader.MainActivity;
-import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.models.MarketPlace;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.player;
-import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
+
 /**
  * Planet activity
  *
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings("ALL")
 public class PlayingActivity extends AppCompatActivity {
     MarketPlace marketPlace;
     SolarSystem planet;
     private player player;
-    ArrayList<SolarSystem> solarList;
+    Serializable solarList;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playing);

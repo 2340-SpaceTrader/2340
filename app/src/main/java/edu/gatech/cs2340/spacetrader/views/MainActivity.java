@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.WelcomeActivity;
 
 /**
@@ -15,6 +14,7 @@ import edu.gatech.cs2340.spacetrader.WelcomeActivity;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings("ALL")
 public class MainActivity extends AppCompatActivity {
 
     @Override

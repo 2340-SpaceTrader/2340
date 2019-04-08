@@ -16,7 +16,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.views.MainActivity;
 /**
  * Register activity
@@ -24,6 +23,7 @@ import edu.gatech.cs2340.spacetrader.views.MainActivity;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings("ALL")
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
@@ -49,10 +49,10 @@ public class RegisterActivity extends AppCompatActivity {
             finish();
         }
 
-        inputEmail = (EditText) findViewById(R.id.email_edit_text);
-        inputPassword = (EditText) findViewById(R.id.password_edit_text);
-        btnSignUp = (Button) findViewById(R.id.register_button);
-        btnLogin = (Button) findViewById(R.id.back_button);
+        inputEmail = findViewById(R.id.email_edit_text);
+        inputPassword = findViewById(R.id.password_edit_text);
+        btnSignUp = findViewById(R.id.register_button);
+        btnLogin = findViewById(R.id.back_button);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override            public void onClick(View view) {

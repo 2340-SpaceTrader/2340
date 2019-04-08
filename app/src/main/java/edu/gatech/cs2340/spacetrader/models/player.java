@@ -1,10 +1,11 @@
 package edu.gatech.cs2340.spacetrader.models;
 
+import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
 
@@ -14,6 +15,7 @@ import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings("ALL")
 public class player implements Parcelable {
     private String name;
     private int skillPoints;
@@ -40,7 +42,7 @@ public class player implements Parcelable {
         fuel = 1000.0;
         SPAllocation = new ArrayList<Integer>(4);
         CreateUniverse universe = new CreateUniverse();
-        ArrayList<SolarSystem> solarList = new ArrayList<>(universe.create());
+        List<SolarSystem> solarList = new ArrayList<>(universe.create());
         planet = solarList.get(0);
     }
     /**
@@ -223,6 +225,7 @@ public class player implements Parcelable {
      * To display player's attributes
      * @return String
      */
+    @SuppressLint("DefaultLocale")
     @Override
     public String toString() {
         return String.format("Player's name: %s \n Game mode: %s \n " +

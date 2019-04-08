@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.spacetrader.viewmodel;
 
-import android.widget.Spinner;
-
 import java.util.Random;
 
 import edu.gatech.cs2340.spacetrader.models.Events;
@@ -14,6 +12,7 @@ import edu.gatech.cs2340.spacetrader.models.player;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings("ALL")
 public class Travel {
 //    private player player;
 //    private SolarSystem planet;

@@ -6,11 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import edu.gatech.cs2340.spacetrader.views.MainActivity;
 import edu.gatech.cs2340.spacetrader.views.RegisterActivity;
 import edu.gatech.cs2340.spacetrader.views.SignInActivity;
 
 
+@SuppressWarnings("ALL")
 public class WelcomeActivity extends AppCompatActivity {
 
 

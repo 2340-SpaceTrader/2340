@@ -4,12 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 import edu.gatech.cs2340.spacetrader.models.PriceResources;
-import edu.gatech.cs2340.spacetrader.models.Resources;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.TechLevel;
 /**
@@ -18,6 +16,7 @@ import edu.gatech.cs2340.spacetrader.models.TechLevel;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings("ALL")
 public class CreateUniverse implements Parcelable {
     private SolarSystem solarSystem;
 
@@ -43,7 +42,7 @@ public class CreateUniverse implements Parcelable {
 
     public ArrayList<SolarSystem> create() {
         ArrayList<SolarSystem> solarList = new ArrayList<>();
-        ArrayList<String> solarName = new ArrayList<String>();
+        List<String> solarName = new ArrayList<String>();
         solarName.add("Acamar");
         solarName.add("Brax");
         solarName.add("Calonia");
@@ -55,7 +54,7 @@ public class CreateUniverse implements Parcelable {
         solarName.add("Jason");
         solarName.add("Lave");
 
-        ArrayList<TechLevel> techLevelList = new ArrayList<>();
+        List<TechLevel> techLevelList = new ArrayList<>();
         techLevelList.add(TechLevel.PreAgriculture);
         techLevelList.add(TechLevel.Agriculture);
         techLevelList.add(TechLevel.Medieval);
@@ -65,7 +64,7 @@ public class CreateUniverse implements Parcelable {
         techLevelList.add(TechLevel.PostIndustrial);
         techLevelList.add(TechLevel.HiTech);
 
-        ArrayList<PriceResources> resourcesList = new ArrayList<>();
+        List<PriceResources> resourcesList = new ArrayList<>();
         resourcesList.add(PriceResources.Never);
         resourcesList.add(PriceResources.MineralRich);
         resourcesList.add(PriceResources.MineralPoor);

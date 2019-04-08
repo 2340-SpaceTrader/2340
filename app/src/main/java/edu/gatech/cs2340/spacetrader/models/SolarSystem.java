@@ -3,10 +3,9 @@ package edu.gatech.cs2340.spacetrader.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
+
 /**
  * Solar system class that creates a universe
  *
@@ -14,13 +13,13 @@ import java.util.Random;
  * @version 1.0
  */
 public class SolarSystem implements Parcelable {
-    private String name;
+    private final String name;
     private int x;
     private int y;
     private TechLevel techLevel;
     private PriceResources resources;
-    private Events event;
-    private Random rand;
+    // --Commented out by Inspection (4/8/2019 5:11 PM):private Events event;
+    // --Commented out by Inspection (4/8/2019 5:11 PM):private Random rand;
     /**
      * Construct
      * @param name the name
@@ -78,41 +77,51 @@ public class SolarSystem implements Parcelable {
             return new SolarSystem[size];
         }
     };
-    /**
-     * set name
-     * @param name the name
-     * */
-    public void setName(String name) {
-        this.name = name;
-    }
-    /**
-     * set x
-     * @param x the x
-     * */
-    public void setX(int x) {
-        this.x = x;
-    }
-    /**
-     * set y
-     * @param y the y
-     * */
-    public void setY(int y) {
-        this.y = y;
-    }
-    /**
-     * set tech level
-     * @param techLevel the tech level
-     * */
-    public void setTechLevel(TechLevel techLevel) {
-        this.techLevel = techLevel;
-    }
-    /**
-     * set resources
-     * @param resources the resource
-     * */
-    public void setResources(PriceResources resources) {
-        this.resources = resources;
-    }
+// --Commented out by Inspection START (4/8/2019 5:11 PM):
+//    /**
+//     * set name
+//     * @param name the name
+//     * */
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+// --Commented out by Inspection STOP (4/8/2019 5:11 PM)
+// --Commented out by Inspection START (4/8/2019 5:11 PM):
+//    /**
+//     * set x
+//     * @param x the x
+//     * */
+//    public void setX(int x) {
+//        this.x = x;
+//    }
+// --Commented out by Inspection STOP (4/8/2019 5:11 PM)
+// --Commented out by Inspection START (4/8/2019 5:11 PM):
+//    /**
+//     * set y
+//     * @param y the y
+//     * */
+//    public void setY(int y) {
+//        this.y = y;
+//    }
+// --Commented out by Inspection STOP (4/8/2019 5:11 PM)
+// --Commented out by Inspection START (4/8/2019 5:11 PM):
+//    /**
+//     * set tech level
+//     * @param techLevel the tech level
+//     * */
+//    public void setTechLevel(TechLevel techLevel) {
+//        this.techLevel = techLevel;
+//    }
+// --Commented out by Inspection STOP (4/8/2019 5:11 PM)
+// --Commented out by Inspection START (4/8/2019 5:11 PM):
+//    /**
+//     * set resources
+//     * @param resources the resource
+//     * */
+//    public void setResources(PriceResources resources) {
+//        this.resources = resources;
+//    }
+// --Commented out by Inspection STOP (4/8/2019 5:11 PM)
     /**
      * get name
      * @return  name

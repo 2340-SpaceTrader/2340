@@ -2,7 +2,6 @@ package edu.gatech.cs2340.spacetrader.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,6 +11,7 @@ import java.util.HashMap;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings("ALL")
 public class Cargo implements Parcelable {
 
 

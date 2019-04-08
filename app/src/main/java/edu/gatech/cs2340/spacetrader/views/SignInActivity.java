@@ -11,8 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import edu.gatech.cs2340.spacetrader.R;
-
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings("ALL")
 public class SignInActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
@@ -42,10 +41,10 @@ public class SignInActivity extends AppCompatActivity {
         PD.setCanceledOnTouchOutside(false);
         auth = FirebaseAuth.getInstance();
 
-        inputEmail = (EditText) findViewById(R.id.email);
-        inputPassword = (EditText) findViewById(R.id.password);
-        btnSignUp = (Button) findViewById(R.id.signup_button);
-        btnLogin = (Button) findViewById(R.id.signin_button);
+        inputEmail = findViewById(R.id.email);
+        inputPassword = findViewById(R.id.password);
+        btnSignUp = findViewById(R.id.signup_button);
+        btnLogin = findViewById(R.id.signin_button);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override            public void onClick(View view) {
