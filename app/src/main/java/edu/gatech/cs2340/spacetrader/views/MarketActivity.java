@@ -43,6 +43,10 @@ public class MarketActivity extends AppCompatActivity {
     private player player;
     private SolarSystem planet;
 
+    /**
+     * creates the marketplace for user to buy and sell
+     * @param savedInstanceState Bundle savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +102,10 @@ public class MarketActivity extends AppCompatActivity {
         });
 
     }
+
+    /**
+     * gets the incoming intent
+     */
     private void getIncomingIntent() {
 
         if (getIntent().hasExtra("player")) {

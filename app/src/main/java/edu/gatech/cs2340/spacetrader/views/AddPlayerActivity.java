@@ -38,7 +38,10 @@ public class AddPlayerActivity extends AppCompatActivity {
     private MarketPlace marketPlace;
     private SolarSystem planet;
 
-
+    /**
+     * adds the player
+     * @param savedInstanceState Bundle savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
