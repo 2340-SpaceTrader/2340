@@ -48,28 +48,20 @@ public class BuyActivity extends AppCompatActivity {
                 intent.putExtra("marketPlace", marketPlace);
                 intent.putExtra("planet", planet);
                 startActivity(intent);
-//                finish();
-//                System.exit(0);
             }
         });
 
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //AddPlayerActivity CurPlayer = new AddPlayerActivity();
-                //System.out.println(.getPlayer().getCredits());
-
                 int numBuy = Integer.parseInt(buyCount.getText().toString());
                 Resources buyResource = (Resources) BuyList.getSelectedItem();
-
                 try {
                 marketPlace.buy(player, buyResource, player.getShip().getCargoStorage(), numBuy, planet.getPriceResources());
                  } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                    return;
                 }
-                marketPlace.display();
                 Intent intent = new Intent(BuyActivity.this, MarketActivity.class);
                 intent.putExtra("player", player);
                 intent.putExtra("marketPlace", marketPlace);
@@ -80,18 +72,14 @@ public class BuyActivity extends AppCompatActivity {
     }
 
     private void getIncomingIntent() {
-//        System.out.println("aaaaaaaaaaaasdasdasssssss");
         if (getIntent().hasExtra("player")) {
             player = getIntent().getParcelableExtra("player");
-//            Log.d("receive Player", player.toString());
         }
         if (getIntent().hasExtra("marketPlace")) {
             marketPlace = getIntent().getParcelableExtra("marketPlace");
-//            Log.d("receive marketPlace", "marketPlace hello");
         }
         if (getIntent().hasExtra("planet")) {
             planet = getIntent().getParcelableExtra("planet");
-//            Log.d("receive planet", "planet hello");
         }
     }
 }

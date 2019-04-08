@@ -65,7 +65,6 @@ public class SellActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                marketPlace.display();
                 Intent intent = new Intent(SellActivity.this, MarketActivity.class);
                 intent.putExtra("player", player);
                 intent.putExtra("marketPlace", marketPlace);
@@ -76,18 +75,18 @@ public class SellActivity extends AppCompatActivity {
     }
 
     private void getIncomingIntent() {
-//        System.out.println("aaaaaaaaaaaasdasdasssssss");
+
         if (getIntent().hasExtra("player")) {
             player = getIntent().getParcelableExtra("player");
-//            Log.d("receive Player", "Hello player");
+
         }
         if (getIntent().hasExtra("marketPlace")) {
             marketPlace = getIntent().getParcelableExtra("marketPlace");
-//            Log.d("receive marketPlace", "marketPlace hello");
+
         }
         if (getIntent().hasExtra("planet")) {
             planet = getIntent().getParcelableExtra("planet");
-//            Log.d("receive planet", "planet hello");
+
         }
     }
 }

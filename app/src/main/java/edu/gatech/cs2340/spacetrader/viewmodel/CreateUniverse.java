@@ -1,5 +1,8 @@
 package edu.gatech.cs2340.spacetrader.viewmodel;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -10,12 +13,28 @@ import edu.gatech.cs2340.spacetrader.models.Resources;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.TechLevel;
 
-public class CreateUniverse {
+public class CreateUniverse implements Parcelable {
     private SolarSystem solarSystem;
 
     private Random rand = new Random();
     public CreateUniverse() {
     }
+
+    protected CreateUniverse(Parcel in) {
+        solarSystem = in.readParcelable(SolarSystem.class.getClassLoader());
+    }
+
+    public static final Creator<CreateUniverse> CREATOR = new Creator<CreateUniverse>() {
+        @Override
+        public CreateUniverse createFromParcel(Parcel in) {
+            return new CreateUniverse(in);
+        }
+
+        @Override
+        public CreateUniverse[] newArray(int size) {
+            return new CreateUniverse[size];
+        }
+    };
 
     public ArrayList<SolarSystem> create() {
         ArrayList<SolarSystem> solarList = new ArrayList<>();
@@ -55,6 +74,14 @@ public class CreateUniverse {
         resourcesList.add(PriceResources.LotsOfHerbs);
         resourcesList.add(PriceResources.Artistic);
         resourcesList.add(PriceResources.Warlike);
+        resourcesList.add(PriceResources.Drought);
+        resourcesList.add(PriceResources.Cold);
+        resourcesList.add(PriceResources.Cropfailure);
+        resourcesList.add(PriceResources.War);
+        resourcesList.add(PriceResources.Boredom);
+        resourcesList.add(PriceResources.Plague);
+        resourcesList.add(PriceResources.Lackofworkers);
+
 
         ArrayList<Integer> arrayListX = new ArrayList<>();
         while (arrayListX.size() < 10) {
@@ -84,10 +111,20 @@ public class CreateUniverse {
             int y = arrayListY.get(i);
             String name = solarName.get(i);
             TechLevel techLevel = techLevelList.get((int) (Math.random()*techLevelList.size()));
-            PriceResources resources = resourcesList.get((int) (Math.random()*techLevelList.size()));
+            PriceResources resources = resourcesList.get((int) (Math.random()*resourcesList.size()));
             SolarSystem newSolar = new SolarSystem(name, x, y, techLevel, resources);
             solarList.add(newSolar);
         }
         return solarList;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(solarSystem, flags);
     }
 }

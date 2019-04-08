@@ -9,11 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import edu.gatech.cs2340.spacetrader.MainActivity;
+//import edu.gatech.cs2340.spacetrader.MainActivity;
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.models.MarketPlace;
 import edu.gatech.cs2340.spacetrader.models.Resources;
@@ -27,6 +28,11 @@ public class MarketActivity extends AppCompatActivity {
     private EditText items;
     private EditText name;
     private EditText count;
+    private TextView resources;
+    private TextView price;
+    private TextView quantity;
+    private TextView credit;
+    private TextView cargo_capacity;
 
     private MarketPlace marketPlace;
     private player player;
@@ -37,15 +43,22 @@ public class MarketActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market);
         getIncomingIntent();
+        resources = findViewById(R.id.resources);
+        price = findViewById(R.id.price);
+        quantity = findViewById(R.id.quantity);
+        credit = findViewById(R.id.credit);
+        cargo_capacity = findViewById(R.id.cargo_capacity);
 
-//        items = findViewById(R.id.items_text;
-//        name = findViewById(R.id.name.text);
-//        count =
-//        items = findViewById(R.id.items_text);
         Button buyButton = findViewById(R.id.buy_button);
         Button sellButton = findViewById(R.id.sell_button);
+        Button backButton = findViewById(R.id.back_button);
 
-//        items.setText(marketPlace.display());
+        resources.setText(marketPlace.displayType());
+        price.setText(marketPlace.displayPrice());
+        quantity.setText(marketPlace.displayQuant());
+        credit.setText("Credits: " + String.valueOf(player.getCredits()));
+        cargo_capacity.setText("Cargo: " + String.valueOf(player.getShip().getCargoStorage().getSize()) + "/" +
+                String.valueOf(player.getShip().getCargoStorage().getCapacity()));
 
         sellButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,20 +80,32 @@ public class MarketActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MarketActivity.this, PlayingActivity.class);
+                intent.putExtra("player", player);
+                intent.putExtra("marketPlace", marketPlace);
+                intent.putExtra("planet", planet);
+                startActivity(intent);
+            }
+        });
+
     }
     private void getIncomingIntent() {
-//        System.out.println("aaaaaaaaaaaasdasdasssssss");
+
         if (getIntent().hasExtra("player")) {
             player = getIntent().getParcelableExtra("player");
-//            Log.d("receive Player", player.toString());
+
         }
         if (getIntent().hasExtra("marketPlace")) {
             marketPlace = getIntent().getParcelableExtra("marketPlace");
-//            Log.d("receive marketPlace", "marketPlace hello");
+
         }
         if (getIntent().hasExtra("planet")) {
             planet = getIntent().getParcelableExtra("planet");
-//            Log.d("receive planet", "planet hello");
+
         }
     }
 }
