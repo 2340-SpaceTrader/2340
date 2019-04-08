@@ -1,7 +1,12 @@
 package edu.gatech.cs2340.spacetrader.models;
 
 import java.io.Serializable;
-
+/**
+ * Enum class for prices determination
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
 public enum PriceResources implements Serializable {
     //expesive
     Desert("Desert", 5.0),

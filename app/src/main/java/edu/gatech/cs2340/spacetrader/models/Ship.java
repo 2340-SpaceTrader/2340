@@ -2,7 +2,12 @@ package edu.gatech.cs2340.spacetrader.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
+/**
+ * Ship class holds a player and shiptype
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
 public class Ship implements Parcelable {
     private ShipType ship_type;
     Cargo storage;

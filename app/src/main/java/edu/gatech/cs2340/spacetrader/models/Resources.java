@@ -4,7 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+/**
+ * Enum class for resources..prices,etc.
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
 public enum Resources implements Serializable {
     Water("Water",0,0,2,30,3,4,"Drought", "LotsOfWater", "Dessert",30,50),
     Furs("Furs",0, 0, 0, 250, 10, 10, "Cold", "RichFauna", "Lifeless", 230, 280),
