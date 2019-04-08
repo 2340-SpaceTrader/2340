@@ -38,16 +38,26 @@ public enum PriceResources implements Serializable {
 
     String typePrice;
     double increase;
-
+    /**
+     * Constructor
+     * @param typePrice type price
+     * @param increase it increase by this value
+     */
     PriceResources(String typePrice, double increase) {
         this.typePrice = typePrice;
         this.increase = increase;
     }
-
+    /**
+     * get type price
+     * @return type price
+     */
     public String getTypePrice() {
         return typePrice;
     }
-
+    /**
+     * get increase
+     * @return increase
+     */
     public double getIncrease() {
         return increase;
     }
