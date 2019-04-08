@@ -28,6 +28,10 @@ public class SellActivity extends AppCompatActivity {
     private MarketPlace marketPlace;
     private SolarSystem planet;
 
+    /**
+     * lets user sell resources in the marketplace
+     * @param Bundle savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +82,9 @@ public class SellActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * get incoming player selections for sale
+     */
     private void getIncomingIntent() {
 
         if (getIntent().hasExtra("player")) {

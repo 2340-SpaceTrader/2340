@@ -32,8 +32,12 @@ public class RegisterActivity extends AppCompatActivity {
     private ProgressDialog PD;
 
 
-
-    @Override    protected void onCreate(Bundle savedInstanceState) {
+    /**
+     * lets user register to play game
+     * @param Bundle savedInstanceState
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 

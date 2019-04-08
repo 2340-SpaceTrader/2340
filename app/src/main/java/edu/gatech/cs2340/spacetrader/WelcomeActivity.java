@@ -13,8 +13,10 @@ import edu.gatech.cs2340.spacetrader.views.SignInActivity;
 @SuppressWarnings("ALL")
 public class WelcomeActivity extends AppCompatActivity {
 
-
-
+    /**
+     * creates welcome screen for user
+     * @param Bundle savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

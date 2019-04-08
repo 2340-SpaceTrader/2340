@@ -30,6 +30,10 @@ public class TravelActivity extends AppCompatActivity {
     Serializable solarList;
     private MarketPlace marketPlace;
 
+    /**
+     * lets player travel in game
+     * @param Bundle savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +80,9 @@ public class TravelActivity extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * get incoming player selections for travel
+     */
     private void getIncomingIntent() {
         if (getIntent().hasExtra("player")) {
             player = getIntent().getParcelableExtra("player");

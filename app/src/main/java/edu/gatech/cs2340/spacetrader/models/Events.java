@@ -22,6 +22,10 @@ public enum Events {
     Events(int randomValue) {
         this.randomValue = randomValue;
     }
+    /**
+     * get random value
+     * @return random value
+     */
     public int getRandomValue() {
         return randomValue;
     }
