@@ -20,15 +20,26 @@ public enum TechLevel implements Serializable {
 
     String name;
     int value;
+    /**
+     * Constructor
+     * @param name
+     * @param value
+     * */
     TechLevel(String name, int value) {
         this.name = name;
         this.value = value;
     }
-
+    /**
+     * get name
+     * @return name
+     * */
     public String getName() {
         return name;
     }
-
+    /**
+     * get value
+     * @return value
+     * */
     public int getValue() {
         return value;
     }

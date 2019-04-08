@@ -29,7 +29,6 @@ public class player implements Parcelable {
      * @param name
      * @param gameDifficulty
      */
-
     public player(String name, gameDifficulty gameDifficulty)
 
     {
@@ -44,7 +43,10 @@ public class player implements Parcelable {
         ArrayList<SolarSystem> solarList = new ArrayList<>(universe.create());
         planet = solarList.get(0);
     }
-
+    /**
+     * Constructor of a player
+     * @param in the in
+     */
     protected player(Parcel in) {
         name = in.readString();
         skillPoints = in.readInt();
@@ -57,78 +59,136 @@ public class player implements Parcelable {
     }
 
     public static final Creator<player> CREATOR = new Creator<player>() {
+        /**
+         * player
+         * @param in the in
+         * @return  player
+         */
         @Override
         public player createFromParcel(Parcel in) {
             return new player(in);
         }
-
+        /**
+         * player array
+         * @param size the size
+         * @return  array player
+         */
         @Override
         public player[] newArray(int size) {
             return new player[size];
         }
     };
-
+    /**
+     * getName
+     * @return String
+     */
     public String getName() {
         return name;
     }
-
+    /**
+     * get skill points
+     * @return skill points
+     */
     public int getSkillPoints() {
         return skillPoints;
     }
-
+    /**
+     * get game difficulty
+     * @return game difficulty
+     */
     public gameDifficulty getGameDifficulty() {
         return  gameDifficulty;
     }
-
+    /**
+     * get SPALL
+     * @return Spal location
+     */
     public ArrayList getSPAllocation() {
         return SPAllocation;
     }
-
+    /**
+     * get credit
+     * @return credit
+     */
     public double getCredits() {
         return credits;
     }
-
+    /**
+     * get fuel
+     * @return fuel
+     */
     public double getFuel() {
         return fuel;
     }
-
+    /**
+     * get ship
+     * @return ship
+     */
     public Ship getShip() {
         return ship;
 
     }
-
+    /**
+     * get planet
+     * @return planet
+     */
     public SolarSystem getPlanet() {
         return planet;
     }
-
+    /**
+     * set planet
+     * @param planet a planet
+     * @return planet
+     */
     public void setPlanet(SolarSystem planet) {
         this.planet = planet;
     }
-
+    /**
+     * set ship
+     * @param ship a ship
+     */
     public void setShip(Ship ship) {
         this.ship = ship;
     }
-
+    /**
+     * set fuel
+     * @param fuel a fuel
+     */
     public void setFuel(double fuel) {
         this.fuel = fuel;
     }
-
+    /**
+     * set name
+     * @param name a name
+     */
     public void setName(String name) {
         this.name = name;
     }
-
+    /**
+     * set skill points
+     * @param skillPoints a skill point
+     */
     public void setSkillPoints(int skillPoints) {
         this.skillPoints = skillPoints;
     }
-
+    /**
+     * set game difficulty
+     * @param gameDifficulty game
+     */
     public void setGameDifficulty(gameDifficulty gameDifficulty) {
         this.gameDifficulty = gameDifficulty;
     }
-
+    /**
+     * set spal list
+     * @param list a list
+     */
     public void setSPAllocation(ArrayList<Integer> list) {
         SPAllocation = list;
     }
-
+    /**
+     * set credits
+     * @param credits the credits
+     */
     public void setCredits(double credits) {
         this.credits = credits;
     }
@@ -151,7 +211,6 @@ public class player implements Parcelable {
      * @param list
      * @return boolean
      */
-
     public boolean assertSum16(ArrayList<Integer> list) {
         int sum = 0;
         for(int i = 0; i < 4; i++) {
@@ -164,7 +223,6 @@ public class player implements Parcelable {
      * To display player's attributes
      * @return String
      */
-
     @Override
     public String toString() {
         return String.format("Player's name: %s \n Game mode: %s \n " +
@@ -173,12 +231,19 @@ public class player implements Parcelable {
                 , name, gameDifficulty.toString(), credits, ship.getShipType().getShipName(), SPAllocation.get(0), SPAllocation.get(1),
                 SPAllocation.get(2), SPAllocation.get(3));
     }
-
+    /**
+     * describe contents
+     * @return num
+     */
     @Override
     public int describeContents() {
         return 0;
     }
-
+    /**
+     * write to parcel
+     * @param dest
+     * @param flags
+     */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
