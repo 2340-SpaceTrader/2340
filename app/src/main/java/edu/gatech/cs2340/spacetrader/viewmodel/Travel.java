@@ -22,7 +22,8 @@ public class Travel {
     private double numRand;
     public double calDist(SolarSystem sys1, SolarSystem sys2) {
 
-        return Math.sqrt(Math.pow(sys2.getX() - sys1.getX(), 2) + Math.pow(sys2.getY() - sys1.getY(), 2));
+        return Math.sqrt(Math.pow(sys2.getX() - sys1.getX(), 2)
+                + Math.pow(sys2.getY() - sys1.getY(), 2));
     }
     public void travel(player player, SolarSystem planet) {
         double dist = calDist(player.getPlanet(), planet);
@@ -34,7 +35,9 @@ public class Travel {
             throw new IllegalArgumentException("Not enough fuel to travel");
         }
         player.setFuel(player.getFuel() - dist);
+        System.out.println("+++++++++++++++++++++" + player.getPlanet().getName());
         player.setPlanet(planet);
+        System.out.println("------------------" + player.getPlanet().getName());
         event = planet.getRandEvent();
         numRand = rand.nextDouble();
         if (numRand < 0.8) {

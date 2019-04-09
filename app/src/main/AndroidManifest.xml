@@ -26,6 +26,7 @@
         <activity android:name=".views.MainActivity"/>
         <activity android:name=".views.RegisterActivity"/>
         <activity android:name=".views.SignInActivity"/>
+        <activity android:name=".views.LoadGameActivity"/>
     </application>
 
 </manifest>

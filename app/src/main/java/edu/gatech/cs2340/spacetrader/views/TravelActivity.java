@@ -25,6 +25,7 @@ public class TravelActivity extends AppCompatActivity {
     private Travel go;
     ArrayList<SolarSystem> solarList;
     private MarketPlace marketPlace;
+    private SolarSystem planet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,8 @@ public class TravelActivity extends AppCompatActivity {
         Button ok = findViewById(R.id.ok_button);
         Button back = findViewById(R.id.back_button);
         final CreateUniverse universe = new CreateUniverse();
-        final ArrayAdapter<SolarSystem> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, universe.create());
+        universe.create();
+        final ArrayAdapter<SolarSystem> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, universe.getSolarList());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
@@ -80,11 +82,11 @@ public class TravelActivity extends AppCompatActivity {
         if (getIntent().hasExtra("marketPlace")) {
             marketPlace = getIntent().getParcelableExtra("marketPlace");
         }
-//        if (getIntent().hasExtra("universe")) {
-//            universe = getIntent().getParcelableExtra("universe");
-//        }
-        if (getIntent().hasExtra("list")) {
-            solarList = getIntent().getParcelableExtra("solarList");
+        if (getIntent().hasExtra("planet")) {
+            planet = getIntent().getParcelableExtra("planet");
         }
+//        if (getIntent().hasExtra("")) {
+//            solarList = getIntent().getParcelableExtra("solarList");
+//        }
     }
 }

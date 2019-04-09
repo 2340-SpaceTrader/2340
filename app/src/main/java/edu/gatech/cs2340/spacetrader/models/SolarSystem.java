@@ -17,6 +17,8 @@ public class SolarSystem implements Parcelable {
     private Events event;
     private Random rand;
 
+    public SolarSystem() {
+    }
     public SolarSystem(String name) {
         this.name = name;
     }

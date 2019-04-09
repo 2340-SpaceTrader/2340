@@ -15,16 +15,19 @@ public class player implements Parcelable {
     private double credits;
     private Ship ship;
     private gameDifficulty gameDifficulty;
-    private ArrayList SPAllocation;
+    private ArrayList<Integer> SPAllocation;
     private double fuel;
     private SolarSystem planet;
+    private CreateUniverse universe;
 
+    public player() {
+
+    }
     /**
      * Constructor of a player
      * @param name
      * @param gameDifficulty
      */
-
     public player(String name, gameDifficulty gameDifficulty)
 
     {
@@ -35,8 +38,9 @@ public class player implements Parcelable {
         ship = new Ship();
         fuel = 1000.0;
         SPAllocation = new ArrayList<Integer>(4);
-        CreateUniverse universe = new CreateUniverse();
-        ArrayList<SolarSystem> solarList = new ArrayList<>(universe.create());
+        universe = new CreateUniverse();
+        universe.create();
+        ArrayList<SolarSystem> solarList = universe.getSolarList();
         planet = solarList.get(0);
     }
 
@@ -94,6 +98,14 @@ public class player implements Parcelable {
 
     public SolarSystem getPlanet() {
         return planet;
+    }
+
+    public CreateUniverse getUniverse() {
+        return universe;
+    }
+
+    public void setUniverse(CreateUniverse universe) {
+        this.universe = universe;
     }
 
     public void setPlanet(SolarSystem planet) {

@@ -11,18 +11,23 @@ public class Cargo implements Parcelable {
 
     private int spaceCapacity;
     private int size;
-    private HashMap<Resources, Integer> cargo;
+    private HashMap<String, Integer> cargo;
 
-    public Cargo(int spaceCapacity) {
-        this.spaceCapacity = spaceCapacity;
+    public Cargo() {
+        spaceCapacity = 10;
         size = 0;
         cargo = new HashMap<>();
     }
+//    public Cargo(int spaceCapacity) {
+//        this.spaceCapacity = spaceCapacity;
+//        size = 0;
+//        cargo = new HashMap<>();
+//    }
 
     protected Cargo(Parcel in) {
         spaceCapacity = in.readInt();
         size = in.readInt();
-        cargo = (HashMap<Resources, Integer>) in.readSerializable();
+        cargo = (HashMap<String, Integer>) in.readSerializable();
     }
 
     public static final Creator<Cargo> CREATOR = new Creator<Cargo>() {
@@ -47,8 +52,8 @@ public class Cargo implements Parcelable {
             throw new IllegalArgumentException("Invalid input");
         }
 
-        cargo.putIfAbsent(item, 0);
-        cargo.put(item, cargo.get(item) + count);
+        cargo.putIfAbsent(item.getType(), 0);
+        cargo.put(item.getType(), cargo.get(item.getType()) + count);
         size += count;
 
 //        if (cargo.keySet().contains(item)) {
@@ -69,19 +74,19 @@ public class Cargo implements Parcelable {
         if (count <= 0) {
              throw new IllegalArgumentException("Invalid input");
         }
-         if (!cargo.keySet().contains(item)) {
+         if (!cargo.keySet().contains(item.getType())) {
             throw new java.util.NoSuchElementException("The item does not exists");
         }
-        if (cargo.get(item) < count) {
+        if (cargo.get(item.getType()) < count) {
             throw new IllegalArgumentException("Cannot sell more than the amount of item in the cargo");
         }
-        cargo.put(item, cargo.get(item) - count);
+        cargo.put(item.getType(), cargo.get(item.getType()) - count);
         size -= count;
     }
     private ArrayList<String> displayCargo() {
         ArrayList<String> list = new ArrayList<>();
-        for (Resources item : cargo.keySet()) {
-            list.add(item.getType());
+        for (String item : cargo.keySet()) {
+            list.add(item);
         }
         return list;
     }
@@ -92,7 +97,7 @@ public class Cargo implements Parcelable {
     }
     public int occupiedSpace() {
         int sum = 0;
-        for(Resources item : cargo.keySet()) {
+        for(String item : cargo.keySet()) {
             sum += cargo.get(item);
         }
         return sum;

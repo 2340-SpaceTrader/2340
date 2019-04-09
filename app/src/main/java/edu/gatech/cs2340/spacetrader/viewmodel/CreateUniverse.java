@@ -16,12 +16,16 @@ import edu.gatech.cs2340.spacetrader.models.TechLevel;
 public class CreateUniverse implements Parcelable {
     private SolarSystem solarSystem;
 
-    private Random rand = new Random();
+
+
+    private ArrayList<SolarSystem> solarList;
+
     public CreateUniverse() {
     }
 
     protected CreateUniverse(Parcel in) {
         solarSystem = in.readParcelable(SolarSystem.class.getClassLoader());
+        solarList = (ArrayList<SolarSystem>) in.readSerializable();
     }
 
     public static final Creator<CreateUniverse> CREATOR = new Creator<CreateUniverse>() {
@@ -36,8 +40,9 @@ public class CreateUniverse implements Parcelable {
         }
     };
 
-    public ArrayList<SolarSystem> create() {
-        ArrayList<SolarSystem> solarList = new ArrayList<>();
+    public void create() {
+        Random rand = new Random();
+        solarList = new ArrayList<>();
         ArrayList<String> solarName = new ArrayList<String>();
         solarName.add("Acamar");
         solarName.add("Brax");
@@ -115,6 +120,10 @@ public class CreateUniverse implements Parcelable {
             SolarSystem newSolar = new SolarSystem(name, x, y, techLevel, resources);
             solarList.add(newSolar);
         }
+//        return solarList;
+    }
+
+    public ArrayList<SolarSystem> getSolarList() {
         return solarList;
     }
 
@@ -126,5 +135,6 @@ public class CreateUniverse implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeParcelable(solarSystem, flags);
+        dest.writeSerializable(solarList);
     }
 }

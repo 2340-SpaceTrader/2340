@@ -9,7 +9,7 @@ public class Ship implements Parcelable {
     //no arg constructor
     public Ship() {
         ship_type = ShipType.GnatSpaceShip;
-        storage = new Cargo(ship_type.spaceCapacity());
+        storage = new Cargo();
     }
 
     protected Ship(Parcel in) {
