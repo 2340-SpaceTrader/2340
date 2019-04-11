@@ -29,6 +29,11 @@ public class PlayingActivity extends AppCompatActivity {
     SolarSystem planet;
     private player player;
     ArrayList<SolarSystem> solarList;
+
+    /**
+     * lets the player play the game
+     * @param savedInstanceState Bundle savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playing);
@@ -82,6 +87,10 @@ public class PlayingActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * gets the incoming intent
+     */
     private void getIncomingIntent() {
         if (getIntent().hasExtra("player")) {
             player = getIntent().getParcelableExtra("player");

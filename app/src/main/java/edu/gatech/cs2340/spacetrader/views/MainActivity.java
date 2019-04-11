@@ -17,6 +17,10 @@ import edu.gatech.cs2340.spacetrader.WelcomeActivity;
  */
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * main page for app
+     * @param savedInstanceState Bundle savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

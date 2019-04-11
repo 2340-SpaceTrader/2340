@@ -31,6 +31,10 @@ public class SignInActivity extends AppCompatActivity {
     private Button btnSignUp, btnLogin;
     private ProgressDialog PD;
 
+    /**
+     * lets user sign in to play
+     * @param Bundle savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,7 +106,11 @@ public class SignInActivity extends AppCompatActivity {
 
     }
 
-    @Override    protected void onResume() {
+    /**
+     * makes sure player account is valid
+     */
+    @Override
+    protected void onResume() {
         if (auth.getCurrentUser() != null) {
             startActivity(new Intent(SignInActivity.this, MainActivity.class));
             finish();

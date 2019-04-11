@@ -22,25 +22,50 @@ public class CreateUniverse implements Parcelable {
     private SolarSystem solarSystem;
 
     private Random rand = new Random();
+
+    /**
+     * Creates the universe
+     *
+     */
     public CreateUniverse() {
     }
 
+    /**
+     * constructor
+     *
+     * @param in in
+     * */
     protected CreateUniverse(Parcel in) {
         solarSystem = in.readParcelable(SolarSystem.class.getClassLoader());
     }
 
     public static final Creator<CreateUniverse> CREATOR = new Creator<CreateUniverse>() {
+
+        /**
+         * create from parcel
+         * @param in in
+         * @return CreateUniverse
+         * */
         @Override
         public CreateUniverse createFromParcel(Parcel in) {
             return new CreateUniverse(in);
         }
 
+        /**
+         * creates new array
+         * @param size size of array
+         * @return CreateUniverse[] create universe array
+         * */
         @Override
         public CreateUniverse[] newArray(int size) {
             return new CreateUniverse[size];
         }
     };
 
+    /**
+     * Creates an ArrayList of the SolarSystem
+     *
+     */
     public ArrayList<SolarSystem> create() {
         ArrayList<SolarSystem> solarList = new ArrayList<>();
         ArrayList<String> solarName = new ArrayList<String>();
@@ -123,11 +148,20 @@ public class CreateUniverse implements Parcelable {
         return solarList;
     }
 
+    /**
+     * describe contents
+     * @return int 0
+     * */
     @Override
     public int describeContents() {
         return 0;
     }
 
+    /**
+     * write To Parcel
+     * @param dest the destination
+     * @param flags the flags
+     * */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeParcelable(solarSystem, flags);
