@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.spacetrader.viewmodel;
 
-import android.widget.Spinner;
-
 import java.util.Random;
 
 import edu.gatech.cs2340.spacetrader.models.Events;
@@ -9,11 +7,12 @@ import edu.gatech.cs2340.spacetrader.models.Resources;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.player;
 /**
- * Travels to anoter planet
+ * Travels to another planet
  *
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings({"OverlyComplexMethod", "UseOfSystemOutOrSystemErr", "ChainedMethodCall"})
 public class Travel {
 //    private player player;
 //    private SolarSystem planet;
@@ -31,7 +30,8 @@ public class Travel {
      * @param sys2 solar system 2
      * @return double of distance between two planets
      */
-    public double calDist(SolarSystem sys1, SolarSystem sys2) {
+    @SuppressWarnings("LongLine")
+    private double calDist(SolarSystem sys1, SolarSystem sys2) {
 
         return Math.sqrt(Math.pow(sys2.getX() - sys1.getX(), 2) + Math.pow(sys2.getY() - sys1.getY(), 2));
     }
@@ -39,7 +39,6 @@ public class Travel {
      * travel between planets
      * @param player player
      * @param planet planet
-     * @return lets player travel to planet
      */
     public void travel(player player, SolarSystem planet) {
         double dist = calDist(player.getPlanet(), planet);

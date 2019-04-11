@@ -4,12 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Random;
 
 import edu.gatech.cs2340.spacetrader.models.PriceResources;
-import edu.gatech.cs2340.spacetrader.models.Resources;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.TechLevel;
 /**
@@ -35,7 +32,7 @@ public class CreateUniverse implements Parcelable {
      *
      * @param in in
      * */
-    protected CreateUniverse(Parcel in) {
+    private CreateUniverse(Parcel in) {
         solarSystem = in.readParcelable(SolarSystem.class.getClassLoader());
     }
 
@@ -64,11 +61,13 @@ public class CreateUniverse implements Parcelable {
 
     /**
      * Creates an ArrayList of the SolarSystem
+     * @return solarlist list solarlist
      *
      */
+    @SuppressWarnings({"OverlyLongMethod", "LongLine"})
     public ArrayList<SolarSystem> create() {
         ArrayList<SolarSystem> solarList = new ArrayList<>();
-        ArrayList<String> solarName = new ArrayList<String>();
+        ArrayList<String> solarName = new ArrayList<>();
         solarName.add("Acamar");
         solarName.add("Brax");
         solarName.add("Calonia");

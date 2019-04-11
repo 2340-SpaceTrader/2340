@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author Group 46B NO MAC
  * @version 1.0
  */
-public enum PriceResources implements Serializable {
+public enum PriceResources {
     //expesive
     Desert("Desert", 5.0),
     Lifeless("Lifeless", 5.0),

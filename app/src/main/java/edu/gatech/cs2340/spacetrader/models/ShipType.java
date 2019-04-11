@@ -7,20 +7,17 @@ import java.io.Serializable;
  * @author Group 46B NO MAC
  * @version 1.0
  */
-public enum ShipType implements Serializable {
+public enum ShipType {
 
-    GnatSpaceShip("GnatSpaceShip", 10);
+    GnatSpaceShip();
 
     private String shipName;
     private int spaceCapacity;
     /**
-     * Constructor
-     * @param shipName a ship
-     * @param spaceCapacity a ship
-     * */
-    ShipType(String shipName, int spaceCapacity) {
-        this.shipName = shipName;
-        this.spaceCapacity = spaceCapacity;
+     * Constructor  */
+    ShipType() {
+        this.shipName = "GnatSpaceShip";
+        this.spaceCapacity = 10;
     }
     /**
      * get ship name

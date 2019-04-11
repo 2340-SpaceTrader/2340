@@ -1,11 +1,5 @@
 package edu.gatech.cs2340.spacetrader.models;
 /**
- * Your implementation of various sorting algorithms.
- *
- * @author Group 46B NO MAC
- * @version 1.0
- */
-/**
  * Enum class for random events
  *
  * @author Group 46B NO MAC

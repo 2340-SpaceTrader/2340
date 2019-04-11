@@ -3,12 +3,9 @@ package edu.gatech.cs2340.spacetrader.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -17,23 +14,25 @@ import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.models.MarketPlace;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.player;
-import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
+
 /**
  * Planet activity
  *
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings({"LongLine", "ChainedMethodCall"})
 public class PlayingActivity extends AppCompatActivity {
-    MarketPlace marketPlace;
-    SolarSystem planet;
+    private MarketPlace marketPlace;
+    private SolarSystem planet;
     private player player;
-    ArrayList<SolarSystem> solarList;
+    private ArrayList<SolarSystem> solarList;
 
     /**
      * lets the player play the game
      * @param savedInstanceState Bundle savedInstanceState
      */
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playing);
@@ -70,6 +69,7 @@ public class PlayingActivity extends AppCompatActivity {
         });
 
         market.setOnClickListener(new View.OnClickListener() {
+            @SuppressWarnings("LongLine")
             @Override
             public void onClick(View v) {
 
@@ -77,6 +77,7 @@ public class PlayingActivity extends AppCompatActivity {
 //                ArrayList<SolarSystem> solarList = new ArrayList<>(universe.create());
 //                planet = solarList.get(0);
                 planet = player.getPlanet();
+                //noinspection LongLine
                 marketPlace = new MarketPlace(player.getPlanet(), player.getPlanet().getPriceResources());
 
                 Intent intent = new Intent(PlayingActivity.this, MarketActivity.class);

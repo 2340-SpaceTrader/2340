@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author Group 46B NO MAC
  * @version 1.0
  */
-public enum TechLevel implements Serializable {
+public enum TechLevel {
     PreAgriculture("Pre-Agriculture", 0),
     Agriculture("Agriculture", 1),
     Medieval("Medieval", 2),
@@ -22,8 +22,8 @@ public enum TechLevel implements Serializable {
     int value;
     /**
      * Constructor
-     * @param name
-     * @param value
+     * @param name String name
+     * @param value int value
      * */
     TechLevel(String name, int value) {
         this.name = name;

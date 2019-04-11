@@ -2,7 +2,6 @@ package edu.gatech.cs2340.spacetrader.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -26,6 +25,7 @@ import edu.gatech.cs2340.spacetrader.models.player;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings({"UseOfSystemOutOrSystemErr", "ChainedMethodCall"})
 public class AddPlayerActivity extends AppCompatActivity {
 
     private EditText name;
@@ -58,7 +58,8 @@ public class AddPlayerActivity extends AppCompatActivity {
         Button okButton = findViewById(R.id.ok_button);
         Button exitButton = findViewById(R.id.exit_button);
 
-        ArrayAdapter<gameDifficulty> difficultyAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,gameDifficulty.values());
+        ArrayAdapter<gameDifficulty> difficultyAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item,gameDifficulty.values());
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
 
@@ -73,14 +74,17 @@ public class AddPlayerActivity extends AppCompatActivity {
         });
 
         okButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressWarnings("OverlyLongMethod")
             @Override
             public void onClick(View v) {
-                player = new player(name.getText().toString(), (gameDifficulty) difficultySpinner.getSelectedItem());
+                player = new player(name.getText().toString(),
+                        (gameDifficulty) difficultySpinner.getSelectedItem());
                 ArrayList<Integer> playerPts = new ArrayList<>(4);
-                if(name.length() == 0 || pilotPts.length() == 0
-                        || fighterPts.length() == 0 || traderPts.length() == 0
-                        || engrPts.length() == 0) {
-                    Toast.makeText(getApplicationContext(), "Input cannot be blank", Toast.LENGTH_SHORT).show();
+                if((name.length() == 0) || (pilotPts.length() == 0)
+                        || (fighterPts.length() == 0) || (traderPts.length() == 0)
+                        || (engrPts.length() == 0)) {
+                    Toast.makeText(getApplicationContext(), "Input cannot be blank",
+                            Toast.LENGTH_SHORT).show();
                     return;
                 }
                 playerPts.add(Integer.parseInt(pilotPts.getText().toString()));
@@ -89,11 +93,14 @@ public class AddPlayerActivity extends AppCompatActivity {
                 playerPts.add(Integer.parseInt(engrPts.getText().toString()));
                 player.setSPAllocation(playerPts);
                 if (!player.assertNonNeg16(playerPts)) {
-                    Toast.makeText(getApplicationContext(), "Input cannot be bigger than 16", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Input cannot be bigger than 16",
+                            Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!player.assertSum16(playerPts)) {
-                    Toast.makeText(getApplicationContext(), "Total skill points cannot be smaller or bigger than 16", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),
+                            "Total skill points cannot be smaller or bigger than 16",
+                            Toast.LENGTH_SHORT).show();
                     return;
                 }
                 CreateUniverse universe = new CreateUniverse();

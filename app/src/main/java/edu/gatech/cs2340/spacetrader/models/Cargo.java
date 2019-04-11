@@ -2,7 +2,6 @@ package edu.gatech.cs2340.spacetrader.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,6 +11,7 @@ import java.util.HashMap;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings("ChainedMethodCall")
 public class Cargo implements Parcelable {
 
 
@@ -35,7 +35,7 @@ public class Cargo implements Parcelable {
      * @param in value
      *
      */
-    protected Cargo(Parcel in) {
+    Cargo(Parcel in) {
         spaceCapacity = in.readInt();
         size = in.readInt();
         cargo = (HashMap<Resources, Integer>) in.readSerializable();
@@ -100,6 +100,7 @@ public class Cargo implements Parcelable {
      * @param count the amount
      *
      */
+    @SuppressWarnings("LongLine")
     public void removeCargo(Resources item, int count) {
 
 //        System.out.println("Space: " + occupiedSpace());
