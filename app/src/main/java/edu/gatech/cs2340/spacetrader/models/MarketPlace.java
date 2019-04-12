@@ -14,10 +14,11 @@ import java.util.NoSuchElementException;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings({"LongLine", "ChainedMethodCall"})
 public class MarketPlace implements Parcelable {
-    HashMap<Resources, Double> buyMap = new HashMap<>();
-    HashMap<Resources, Double> sellMap = new HashMap<>();
-    HashMap<Resources, Integer> quantMap = new HashMap<>();
+    private HashMap<Resources, Double> buyMap = new HashMap<>();
+    private HashMap<Resources, Double> sellMap = new HashMap<>();
+    private HashMap<Resources, Integer> quantMap = new HashMap<>();
 
     private SolarSystem solar;
     private PriceResources priceRes;
@@ -25,7 +26,6 @@ public class MarketPlace implements Parcelable {
      * Constructor
      * @param solar the planet
      * @param priceRes the price of the resources
-     * @return String
      */
     public MarketPlace(SolarSystem solar, PriceResources priceRes) {
         this.solar = solar;
@@ -43,9 +43,9 @@ public class MarketPlace implements Parcelable {
     }
     /**
      * Constructor
-     * @param in
+     * @param in Parcel in
      */
-    protected MarketPlace(Parcel in) {
+    private MarketPlace(Parcel in) {
         solar = in.readParcelable(SolarSystem.class.getClassLoader());
         buyMap = (HashMap<Resources, Double>) in.readSerializable();
         sellMap = (HashMap<Resources, Double>) in.readSerializable();
@@ -132,7 +132,7 @@ public class MarketPlace implements Parcelable {
             calculateSellPrice(priceRes);
             cargo.removeCargo(res, count);
             if (buyMap.keySet().contains(res)) {
-                player.setCredits(player.getCredits() + sellMap.get(res)*count);
+                player.setCredits(player.getCredits() + (sellMap.get(res) * count));
                 quantMap.put(res, quantMap.get(res) + count);
             } else {
                 throw new NoSuchElementException("Cannot sell input resource on this planet");
@@ -156,14 +156,14 @@ public class MarketPlace implements Parcelable {
         if (solar.getTechLevel().getValue() >= res.getMTLP()) {
             calculateBuyPrice(priceRes);
 
-            if (buyMap.keySet().contains(res) && player.getCredits() >= buyMap.get(res)*count) {
+            if (buyMap.keySet().contains(res) && (player.getCredits() >= (buyMap.get(res) * count))) {
                 if (count > quantMap.get(res)) {
                     throw new IllegalArgumentException("Insufficient resource to buy");
                 }
                 cargo.addCargo(res, count);
-                player.setCredits(player.getCredits() - buyMap.get(res)*count);
+                player.setCredits(player.getCredits() - (buyMap.get(res) * count));
                 quantMap.put(res, quantMap.get(res) - count);
-            } else if (player.getCredits() < buyMap.get(res)*count) {
+            } else if (player.getCredits() < (buyMap.get(res) * count)) {
                 throw new IllegalArgumentException("Not enough credits");
             } else {
                 throw new NoSuchElementException("The resource is not available");
@@ -178,7 +178,7 @@ public class MarketPlace implements Parcelable {
      * @param change the price
      *
      */
-    public void calculateBuyPrice(PriceResources change) {
+    private void calculateBuyPrice(PriceResources change) {
         double increase = 1.0;
         for (Resources res : Arrays.asList(Resources.values())) {
             if (res.getiE().equals(change.getTypePrice())) {
@@ -205,7 +205,7 @@ public class MarketPlace implements Parcelable {
      * @param change price changes
      *
      */
-    public void calculateSellPrice(PriceResources change) {
+    private void calculateSellPrice(PriceResources change) {
         double increase = 1.0;
         for (Resources res : Arrays.asList(Resources.values())) {
             if (res.getiE().equals(change.getTypePrice())) {
@@ -228,7 +228,7 @@ public class MarketPlace implements Parcelable {
      * @param solar the system
      *
      */
-    public void quantityTechLevel(SolarSystem solar) {
+    private void quantityTechLevel(SolarSystem solar) {
         List<Resources> list = Arrays.asList(Resources.values());
         for (Resources res : list) {
             if (res.getTTP() == solar.getTechLevel().getValue()) {

@@ -4,12 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Random;
 
 import edu.gatech.cs2340.spacetrader.models.PriceResources;
-import edu.gatech.cs2340.spacetrader.models.Resources;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.TechLevel;
 /**
@@ -22,28 +19,55 @@ public class CreateUniverse implements Parcelable {
     private SolarSystem solarSystem;
 
     private Random rand = new Random();
+
+    /**
+     * Creates the universe
+     *
+     */
     public CreateUniverse() {
     }
 
-    protected CreateUniverse(Parcel in) {
+    /**
+     * constructor
+     *
+     * @param in in
+     * */
+    private CreateUniverse(Parcel in) {
         solarSystem = in.readParcelable(SolarSystem.class.getClassLoader());
     }
 
     public static final Creator<CreateUniverse> CREATOR = new Creator<CreateUniverse>() {
+
+        /**
+         * create from parcel
+         * @param in in
+         * @return CreateUniverse
+         * */
         @Override
         public CreateUniverse createFromParcel(Parcel in) {
             return new CreateUniverse(in);
         }
 
+        /**
+         * creates new array
+         * @param size size of array
+         * @return CreateUniverse[] create universe array
+         * */
         @Override
         public CreateUniverse[] newArray(int size) {
             return new CreateUniverse[size];
         }
     };
 
+    /**
+     * Creates an ArrayList of the SolarSystem
+     * @return solarlist list solarlist
+     *
+     */
+    @SuppressWarnings({"OverlyLongMethod", "LongLine"})
     public ArrayList<SolarSystem> create() {
         ArrayList<SolarSystem> solarList = new ArrayList<>();
-        ArrayList<String> solarName = new ArrayList<String>();
+        ArrayList<String> solarName = new ArrayList<>();
         solarName.add("Acamar");
         solarName.add("Brax");
         solarName.add("Calonia");
@@ -123,11 +147,20 @@ public class CreateUniverse implements Parcelable {
         return solarList;
     }
 
+    /**
+     * describe contents
+     * @return int 0
+     * */
     @Override
     public int describeContents() {
         return 0;
     }
 
+    /**
+     * write To Parcel
+     * @param dest the destination
+     * @param flags the flags
+     * */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeParcelable(solarSystem, flags);

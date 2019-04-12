@@ -3,7 +3,6 @@ package edu.gatech.cs2340.spacetrader.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,6 +21,7 @@ import edu.gatech.cs2340.spacetrader.models.player;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings({"LongLine", "ChainedMethodCall"})
 public class SellActivity extends AppCompatActivity {
     private EditText sellCount;
     private Spinner SellList;
@@ -29,6 +29,10 @@ public class SellActivity extends AppCompatActivity {
     private MarketPlace marketPlace;
     private SolarSystem planet;
 
+    /**
+     * lets user sell resources in the marketplace
+     * @param savedInstanceState Bundle savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +71,7 @@ public class SellActivity extends AppCompatActivity {
                 try {
                     marketPlace.sell(player, sellResource, player.getShip().getCargoStorage(), numSell, planet.getPriceResources());
                 } catch (Exception e) {
+                    //noinspection LongLine
                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -79,6 +84,9 @@ public class SellActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * get incoming player selections for sale
+     */
     private void getIncomingIntent() {
 
         if (getIntent().hasExtra("player")) {

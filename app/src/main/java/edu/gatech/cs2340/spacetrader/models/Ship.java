@@ -10,7 +10,7 @@ import android.os.Parcelable;
  */
 public class Ship implements Parcelable {
     private ShipType ship_type;
-    Cargo storage;
+    private Cargo storage;
     /**
      * Constructor
      * */
@@ -23,7 +23,7 @@ public class Ship implements Parcelable {
      *
      * @param in the in
      * */
-    protected Ship(Parcel in) {
+    Ship(Parcel in) {
         storage = in.readParcelable(Cargo.class.getClassLoader());
         ship_type = (ShipType) in.readSerializable();
     }

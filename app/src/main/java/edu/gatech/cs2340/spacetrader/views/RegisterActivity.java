@@ -11,12 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import edu.gatech.cs2340.spacetrader.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.views.MainActivity;
 /**
  * Register activity
@@ -24,16 +24,21 @@ import edu.gatech.cs2340.spacetrader.views.MainActivity;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings({"LongLine", "ChainedMethodCall"})
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText inputEmail, inputPassword;
+    private EditText inputEmail;
+    private EditText inputPassword;
     private FirebaseAuth auth;
-    private Button btnSignUp, btnLogin;
     private ProgressDialog PD;
 
 
-
-    @Override    protected void onCreate(Bundle savedInstanceState) {
+    /**
+     * lets user register to play game
+     * @param savedInstanceState Bundle savedInstanceState
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
@@ -49,10 +54,10 @@ public class RegisterActivity extends AppCompatActivity {
             finish();
         }
 
-        inputEmail = (EditText) findViewById(R.id.email_edit_text);
-        inputPassword = (EditText) findViewById(R.id.password_edit_text);
-        btnSignUp = (Button) findViewById(R.id.register_button);
-        btnLogin = (Button) findViewById(R.id.back_button);
+        inputEmail = findViewById(R.id.email_edit_text);
+        inputPassword = findViewById(R.id.password_edit_text);
+        Button btnSignUp = findViewById(R.id.register_button);
+        Button btnLogin = findViewById(R.id.back_button);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override            public void onClick(View view) {
@@ -60,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                 final String password = inputPassword.getText().toString();
 
                 try {
-                    if (password.length() > 0 && email.length() > 0) {
+                    if ((!password.isEmpty()) && (!email.isEmpty())) {
                         PD.show();
                         auth.createUserWithEmailAndPassword(email, password)
                                 .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {

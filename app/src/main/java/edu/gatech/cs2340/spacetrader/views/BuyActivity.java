@@ -3,7 +3,6 @@ package edu.gatech.cs2340.spacetrader.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,6 +21,7 @@ import edu.gatech.cs2340.spacetrader.models.player;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings({"LongLine", "ChainedMethodCall"})
 public class BuyActivity extends AppCompatActivity {
 
     private EditText buyCount;
@@ -30,6 +30,10 @@ public class BuyActivity extends AppCompatActivity {
     private player player;
     private SolarSystem planet;
 
+    /**
+     * lets the player buy resources in the marketplace
+     * @param savedInstanceState Bundle savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +80,9 @@ public class BuyActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * gets the incoming intent
+     */
     private void getIncomingIntent() {
         if (getIntent().hasExtra("player")) {
             player = getIntent().getParcelableExtra("player");

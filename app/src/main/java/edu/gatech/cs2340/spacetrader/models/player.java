@@ -1,9 +1,9 @@
 package edu.gatech.cs2340.spacetrader.models;
 
+import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
@@ -14,6 +14,7 @@ import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings({"LongLine", "ChainedMethodCall"})
 public class player implements Parcelable {
     private String name;
     private int skillPoints;
@@ -26,8 +27,8 @@ public class player implements Parcelable {
 
     /**
      * Constructor of a player
-     * @param name
-     * @param gameDifficulty
+     * @param name String name
+     * @param gameDifficulty gameDiff
      */
     public player(String name, gameDifficulty gameDifficulty)
 
@@ -47,7 +48,7 @@ public class player implements Parcelable {
      * Constructor of a player
      * @param in the in
      */
-    protected player(Parcel in) {
+    private player(Parcel in) {
         name = in.readString();
         skillPoints = in.readInt();
         credits = in.readDouble();
@@ -138,7 +139,6 @@ public class player implements Parcelable {
     /**
      * set planet
      * @param planet a planet
-     * @return planet
      */
     public void setPlanet(SolarSystem planet) {
         this.planet = planet;
@@ -194,12 +194,12 @@ public class player implements Parcelable {
     }
     /**
      * To check for negative and number bigger than 16
-     * @param list
-     * @return boolean
+     * @param list ArrayList list
+     * @return boolean assertNonNeg16
      */
     public boolean assertNonNeg16(ArrayList<Integer> list) {
         for(int i = 0; i < 4; i++) {
-            if (list.get(i) < 0 || list.get(i) > 16) {
+            if ((list.get(i) < 0) || (list.get(i) > 16)) {
                 return false;
             }
         }
@@ -208,8 +208,8 @@ public class player implements Parcelable {
 
     /**
      * To check for sum
-     * @param list
-     * @return boolean
+     * @param list ArrayList list
+     * @return boolean assertSum16
      */
     public boolean assertSum16(ArrayList<Integer> list) {
         int sum = 0;
@@ -223,8 +223,10 @@ public class player implements Parcelable {
      * To display player's attributes
      * @return String
      */
+    @SuppressLint("DefaultLocale")
     @Override
     public String toString() {
+        //noinspection MalformedFormatString
         return String.format("Player's name: %s \n Game mode: %s \n " +
                 "Credits: %f \n ShipType: %s \n" +
                 " Pilot points: %d \n Fighter points: %d \n Trader points: %d \n Engineer points: %d \n"
@@ -241,8 +243,8 @@ public class player implements Parcelable {
     }
     /**
      * write to parcel
-     * @param dest
-     * @param flags
+     * @param dest Parcel dest
+     * @param flags int flags
      */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
