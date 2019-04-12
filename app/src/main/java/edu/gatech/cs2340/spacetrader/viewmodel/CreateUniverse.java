@@ -1,18 +1,45 @@
 package edu.gatech.cs2340.spacetrader.viewmodel;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 
+import edu.gatech.cs2340.spacetrader.models.PriceResources;
+import edu.gatech.cs2340.spacetrader.models.Resources;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
-
-public class CreateUniverse {
+import edu.gatech.cs2340.spacetrader.models.TechLevel;
+/**
+ * Generates a planet
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
+public class CreateUniverse implements Parcelable {
     private SolarSystem solarSystem;
 
     private Random rand = new Random();
     public CreateUniverse() {
     }
+
+    protected CreateUniverse(Parcel in) {
+        solarSystem = in.readParcelable(SolarSystem.class.getClassLoader());
+    }
+
+    public static final Creator<CreateUniverse> CREATOR = new Creator<CreateUniverse>() {
+        @Override
+        public CreateUniverse createFromParcel(Parcel in) {
+            return new CreateUniverse(in);
+        }
+
+        @Override
+        public CreateUniverse[] newArray(int size) {
+            return new CreateUniverse[size];
+        }
+    };
 
     public ArrayList<SolarSystem> create() {
         ArrayList<SolarSystem> solarList = new ArrayList<>();
@@ -28,30 +55,38 @@ public class CreateUniverse {
         solarName.add("Jason");
         solarName.add("Lave");
 
-        ArrayList<String> techLevelList = new ArrayList<>();
-        techLevelList.add("Pre-Agriculture");
-        techLevelList.add("Agriculture");
-        techLevelList.add("Medieval");
-        techLevelList.add("Renaissance");
-        techLevelList.add("Early Industrial");
-        techLevelList.add("Industrial");
-        techLevelList.add("Post-Industrial");
-        techLevelList.add("Hi-Tech");
+        ArrayList<TechLevel> techLevelList = new ArrayList<>();
+        techLevelList.add(TechLevel.PreAgriculture);
+        techLevelList.add(TechLevel.Agriculture);
+        techLevelList.add(TechLevel.Medieval);
+        techLevelList.add(TechLevel.Renaissance);
+        techLevelList.add(TechLevel.EarlyIndustrial);
+        techLevelList.add(TechLevel.Industrial);
+        techLevelList.add(TechLevel.PostIndustrial);
+        techLevelList.add(TechLevel.HiTech);
 
-        ArrayList<String> resourcesList = new ArrayList<>();
-        resourcesList.add("NOSPECIALRESOURCES");
-        resourcesList.add("MINERALRICH");
-        resourcesList.add("MINERALPOOR");
-        resourcesList.add("DESERT");
-        resourcesList.add("LOTSOFWATER");
-        resourcesList.add("RICHSOIL");
-        resourcesList.add("POORSOIL");
-        resourcesList.add("RICHFAUNA");
-        resourcesList.add("LIFELESS");
-        resourcesList.add("WEIRDMUSHROOMS");
-        resourcesList.add("LOTSOFHERBS");
-        resourcesList.add("ARTISTIC");
-        resourcesList.add("WARLIKE");
+        ArrayList<PriceResources> resourcesList = new ArrayList<>();
+        resourcesList.add(PriceResources.Never);
+        resourcesList.add(PriceResources.MineralRich);
+        resourcesList.add(PriceResources.MineralPoor);
+        resourcesList.add(PriceResources.Desert);
+        resourcesList.add(PriceResources.LotsOfWater);
+        resourcesList.add(PriceResources.RichSoil);
+        resourcesList.add(PriceResources.PoorSoil);
+        resourcesList.add(PriceResources.RichFauna);
+        resourcesList.add(PriceResources.Lifeless);
+        resourcesList.add(PriceResources.WeirdMushrooms);
+        resourcesList.add(PriceResources.LotsOfHerbs);
+        resourcesList.add(PriceResources.Artistic);
+        resourcesList.add(PriceResources.Warlike);
+        resourcesList.add(PriceResources.Drought);
+        resourcesList.add(PriceResources.Cold);
+        resourcesList.add(PriceResources.Cropfailure);
+        resourcesList.add(PriceResources.War);
+        resourcesList.add(PriceResources.Boredom);
+        resourcesList.add(PriceResources.Plague);
+        resourcesList.add(PriceResources.Lackofworkers);
+
 
         ArrayList<Integer> arrayListX = new ArrayList<>();
         while (arrayListX.size() < 10) {
@@ -72,19 +107,29 @@ public class CreateUniverse {
             int x = arrayListX.get(i);
             int y = arrayListY.get(i);
             String name = solarName.get(i);
-            String techLevel = techLevelList.get((int) (Math.random()*techLevelList.size()));
-            SolarSystem newSolar = new SolarSystem(name, x, y, techLevel, "NOSPECIALRESOURCES");
+            TechLevel techLevel = techLevelList.get((int) (Math.random()*techLevelList.size()));
+            SolarSystem newSolar = new SolarSystem(name, x, y, techLevel, PriceResources.Never);
             solarList.add(newSolar);
         }
         for (int i = 5; i < 10; i++) {
             int x = arrayListX.get(i);
             int y = arrayListY.get(i);
             String name = solarName.get(i);
-            String techLevel = techLevelList.get((int) (Math.random()*techLevelList.size()));
-            String resources = resourcesList.get((int) (Math.random()*techLevelList.size()));
+            TechLevel techLevel = techLevelList.get((int) (Math.random()*techLevelList.size()));
+            PriceResources resources = resourcesList.get((int) (Math.random()*resourcesList.size()));
             SolarSystem newSolar = new SolarSystem(name, x, y, techLevel, resources);
             solarList.add(newSolar);
         }
         return solarList;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(solarSystem, flags);
     }
 }

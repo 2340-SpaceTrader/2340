@@ -12,8 +12,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import edu.gatech.cs2340.spacetrader.MainActivity;
+//import edu.gatech.cs2340.spacetrader.MainActivity;
 import edu.gatech.cs2340.spacetrader.R;
+import edu.gatech.cs2340.spacetrader.models.MarketPlace;
 import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.gameDifficulty;
@@ -21,6 +22,9 @@ import edu.gatech.cs2340.spacetrader.models.player;
 
 /**
  * The Add player page
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
  */
 public class AddPlayerActivity extends AppCompatActivity {
 
@@ -31,11 +35,15 @@ public class AddPlayerActivity extends AppCompatActivity {
     private EditText fighterPts;
     private Spinner difficultySpinner;
     private player player;
+    private MarketPlace marketPlace;
+    private SolarSystem planet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_player);
+
+//        getIncomingIntent();
 
         name = findViewById(R.id.player_name);
         pilotPts = findViewById(R.id.pilot_point);
@@ -49,6 +57,8 @@ public class AddPlayerActivity extends AppCompatActivity {
         ArrayAdapter<gameDifficulty> difficultyAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,gameDifficulty.values());
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
+
+
 
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,10 +102,19 @@ public class AddPlayerActivity extends AppCompatActivity {
                 }
                 System.out.println(player.toString());
                 Intent intent = new Intent(AddPlayerActivity.this, PlayingActivity.class);
+                intent.putExtra("player", player);
+                intent.putExtra("marketPlace", marketPlace);
+                intent.putExtra("planet", planet);
+                intent.putExtra("solarList", solarList );
                 startActivity(intent);
             }
         });
 
     }
+
+    public player getPlayer() {
+        return player;
+    }
+
 
 }
