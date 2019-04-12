@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,7 +20,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 //import edu.gatech.cs2340.spacetrader.MainActivity;
-import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.models.MarketPlace;
 import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
@@ -30,7 +28,11 @@ import edu.gatech.cs2340.spacetrader.models.player;
 
 /**
  * The Add player page
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
  */
+@SuppressWarnings("ALL")
 public class AddPlayerActivity extends AppCompatActivity {
 
     private EditText name;
@@ -43,9 +45,13 @@ public class AddPlayerActivity extends AppCompatActivity {
     private MarketPlace marketPlace;
     private SolarSystem planet;
 
+<<<<<<< HEAD
     private FirebaseDatabase mDatabase;
     private DatabaseReference playerDb;
     private Context mContext;
+=======
+
+>>>>>>> f7bf939aec99c542d296e9a6f6917eceedebcb81
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

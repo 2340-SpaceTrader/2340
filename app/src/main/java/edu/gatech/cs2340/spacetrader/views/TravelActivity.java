@@ -9,24 +9,32 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
-import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.models.MarketPlace;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
-import edu.gatech.cs2340.spacetrader.models.gameDifficulty;
 import edu.gatech.cs2340.spacetrader.models.player;
 import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
 import edu.gatech.cs2340.spacetrader.viewmodel.Travel;
-
+/**
+ * travel activity
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
+@SuppressWarnings("ALL")
 public class TravelActivity extends AppCompatActivity {
     private Spinner spinner;
     private player player;
     private Travel go;
-    ArrayList<SolarSystem> solarList;
+    Serializable solarList;
     private MarketPlace marketPlace;
     private SolarSystem planet;
 
+    /**
+     * lets player travel in game
+     * @param Bundle savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +82,9 @@ public class TravelActivity extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * get incoming player selections for travel
+     */
     private void getIncomingIntent() {
         if (getIntent().hasExtra("player")) {
             player = getIntent().getParcelableExtra("player");

@@ -1,7 +1,14 @@
 package edu.gatech.cs2340.spacetrader.models;
 
 import java.io.Serializable;
-
+/**
+ * Enum class for techlevel. 
+ * determines the level of a planet
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
+@SuppressWarnings("ALL")
 public enum TechLevel implements Serializable {
     PreAgriculture("Pre-Agriculture", 0),
     Agriculture("Agriculture", 1),
@@ -14,15 +21,26 @@ public enum TechLevel implements Serializable {
 
     String name;
     int value;
+    /**
+     * Constructor
+     * @param name
+     * @param value
+     * */
     TechLevel(String name, int value) {
         this.name = name;
         this.value = value;
     }
-
+    /**
+     * get name
+     * @return name
+     * */
     public String getName() {
         return name;
     }
-
+    /**
+     * get value
+     * @return value
+     * */
     public int getValue() {
         return value;
     }

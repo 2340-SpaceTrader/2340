@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,27 +19,34 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
+import java.io.Serializable;
 
 //import edu.gatech.cs2340.spacetrader.MainActivity;
-import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.models.MarketPlace;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.player;
-import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
 
+/**
+ * Planet activity
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
+@SuppressWarnings("ALL")
 public class PlayingActivity extends AppCompatActivity {
     MarketPlace marketPlace;
     SolarSystem planet;
     private player player;
+<<<<<<< HEAD
     ArrayList<SolarSystem> solarList;
     private Context mContext;
     private FirebaseDatabase mDatabase;
     private DatabaseReference db;
     private DataSnapshot snapshot1;
 
+=======
+    Serializable solarList;
+>>>>>>> f7bf939aec99c542d296e9a6f6917eceedebcb81
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playing);

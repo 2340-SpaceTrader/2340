@@ -9,6 +9,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ * Marketplace for selling and buying
+ *
+ * @author Group 46B NO MAC
+ * @version 1.0
+ */
+@SuppressWarnings("ALL")
 public class MarketPlace implements Parcelable {
     HashMap<String, Double> buyMap = new HashMap<>();
     HashMap<String, Double> sellMap = new HashMap<>();
@@ -16,7 +23,12 @@ public class MarketPlace implements Parcelable {
 
     private SolarSystem solar;
     private PriceResources priceRes;
-
+    /**
+     * Constructor
+     * @param solar the planet
+     * @param priceRes the price of the resources
+     * @return String
+     */
     public MarketPlace(SolarSystem solar, PriceResources priceRes) {
         this.solar = solar;
         this.priceRes = priceRes;
@@ -31,7 +43,10 @@ public class MarketPlace implements Parcelable {
         calculateBuyPrice(priceRes);
         calculateSellPrice(priceRes);
     }
-
+    /**
+     * Constructor
+     * @param in
+     */
     protected MarketPlace(Parcel in) {
         solar = in.readParcelable(SolarSystem.class.getClassLoader());
         buyMap = (HashMap<String, Double>) in.readSerializable();
@@ -41,17 +56,29 @@ public class MarketPlace implements Parcelable {
     }
 
     public static final Creator<MarketPlace> CREATOR = new Creator<MarketPlace>() {
+        /**
+         * create parcel
+         * @param in the in
+         * @return String
+         */
         @Override
         public MarketPlace createFromParcel(Parcel in) {
             return new MarketPlace(in);
         }
-
+        /**
+         * create newArray
+         * @param size the size
+         * @return array marketplace
+         */
         @Override
         public MarketPlace[] newArray(int size) {
             return new MarketPlace[size];
         }
     };
-
+    /**
+     * display the cargo type
+     * @return String
+     */
     public String displayType() {
         StringBuilder sb = new StringBuilder();
         sb.append("Resource(s)");
@@ -63,7 +90,10 @@ public class MarketPlace implements Parcelable {
         }
         return sb.toString();
     }
-
+    /**
+     * display the prices of cargo
+     * @return String
+     */
     public String displayPrice() {
         StringBuilder sb = new StringBuilder();
         sb.append("Price");
@@ -74,7 +104,10 @@ public class MarketPlace implements Parcelable {
         }
         return sb.toString();
     }
-
+    /**
+     * display the contents of cargo
+     * @return String
+     */
     public String displayQuant() {
         StringBuilder sb = new StringBuilder();
         sb.append("Quantity");
@@ -87,7 +120,16 @@ public class MarketPlace implements Parcelable {
         }
         return sb.toString();
     }
-
+    /**
+     * sell method
+     *
+     * @param player the player
+     * @param res the res
+     * @param cargo the cargo
+     * @param count the amount
+     * @param priceRes the price res
+     * @return cargo
+     */
     public Cargo sell(player player, Resources res, Cargo cargo, int count, PriceResources priceRes) {
         if (solar.getTechLevel().getValue() >= res.getMTLP()) {
             calculateSellPrice(priceRes);
@@ -99,18 +141,33 @@ public class MarketPlace implements Parcelable {
                 throw new NoSuchElementException("Cannot sell input resource on this planet");
             }
         } else {
-            throw new IllegalArgumentException("Level Tech of this solar is below the requirement");
+            throw new IllegalArgumentException("This solar system’s tech level is below the requirement");
         }
         return cargo;
     }
-
+    /**
+     * buy method
+     *
+     * @param player the player
+     * @param res the res
+     * @param cargo the cargo
+     * @param count the amount
+     * @param priceRes the price res
+     * @return cargo
+     */
     public Cargo buy(player player, Resources res, Cargo cargo, int count, PriceResources priceRes) {
         if (solar.getTechLevel().getValue() >= res.getMTLP()) {
             calculateBuyPrice(priceRes);
 
+<<<<<<< HEAD
             if (buyMap.keySet().contains(res.getType()) && player.getCredits() >= buyMap.get(res.getType())*count) {
                 if (count > quantMap.get(res.getType())) {
                     throw new IllegalArgumentException("Insufficient resource to buy");
+=======
+            if (buyMap.keySet().contains(res) && player.getCredits() >= buyMap.get(res)*count) {
+                if (count > quantMap.get(res)) {
+                    throw new IllegalArgumentException("Insufficient number of specific resource available for purchase");
+>>>>>>> f7bf939aec99c542d296e9a6f6917eceedebcb81
                 }
                 cargo.addCargo(res, count);
                 player.setCredits(player.getCredits() - buyMap.get(res.getType())*count);
@@ -121,11 +178,15 @@ public class MarketPlace implements Parcelable {
                 throw new NoSuchElementException("The resource is not available");
             }
         } else {
-            throw new IllegalArgumentException("Level Tech of this solar is below the requirement");
+            throw new IllegalArgumentException("This solar system’s tech level is below the requirement");
         }
         return cargo;
     }
-
+    /**
+     * calculate prices
+     * @param change the price
+     *
+     */
     public void calculateBuyPrice(PriceResources change) {
         double increase = 1.0;
         for (Resources res : Arrays.asList(Resources.values())) {
@@ -155,7 +216,11 @@ public class MarketPlace implements Parcelable {
             buyMap.put(item, price);
         }
     }
-
+    /**
+     * calc some stuff
+     * @param change price changes
+     *
+     */
     public void calculateSellPrice(PriceResources change) {
         double increase = 1.0;
 
@@ -183,7 +248,11 @@ public class MarketPlace implements Parcelable {
             sellMap.put(item, price);
         }
     }
-
+    /**
+     * Tech level quantity
+     * @param solar the system
+     *
+     */
     public void quantityTechLevel(SolarSystem solar) {
         List<Resources> list = Arrays.asList(Resources.values());
         for (Resources res : list) {
@@ -194,12 +263,21 @@ public class MarketPlace implements Parcelable {
             }
         }
     }
-
+    /**
+     * describe contents
+     * @return num
+     */
     @Override
     public int describeContents() {
         return 0;
     }
-
+    /**
+     * write to Parcel
+     *
+     * @param dest location
+     * @param flags the flag
+     *
+     */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeParcelable(solar, flags);
