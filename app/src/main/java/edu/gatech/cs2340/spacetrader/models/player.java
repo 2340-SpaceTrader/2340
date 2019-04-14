@@ -45,14 +45,10 @@ public class player implements Parcelable {
         ship = new Ship();
         fuel = 1000.0;
         SPAllocation = new ArrayList<Integer>(4);
-<<<<<<< HEAD
         universe = new CreateUniverse();
         universe.create();
         ArrayList<SolarSystem> solarList = universe.getSolarList();
-=======
-        CreateUniverse universe = new CreateUniverse();
-        List<SolarSystem> solarList = new ArrayList<>(universe.create());
->>>>>>> f7bf939aec99c542d296e9a6f6917eceedebcb81
+
         planet = solarList.get(0);
     }
     /**
@@ -147,7 +143,6 @@ public class player implements Parcelable {
     public SolarSystem getPlanet() {
         return planet;
     }
-<<<<<<< HEAD
 
     public CreateUniverse getUniverse() {
         return universe;
@@ -157,13 +152,7 @@ public class player implements Parcelable {
         this.universe = universe;
     }
 
-=======
-    /**
-     * set planet
-     * @param planet a planet
-     * @return planet
-     */
->>>>>>> f7bf939aec99c542d296e9a6f6917eceedebcb81
+
     public void setPlanet(SolarSystem planet) {
         this.planet = planet;
     }

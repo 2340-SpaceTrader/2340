@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 //import edu.gatech.cs2340.spacetrader.MainActivity;
+import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.models.MarketPlace;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.player;

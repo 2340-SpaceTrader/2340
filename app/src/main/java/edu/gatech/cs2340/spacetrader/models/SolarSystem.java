@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Solar system class that creates a universe
@@ -18,20 +19,12 @@ public class SolarSystem implements Parcelable {
     private int y;
     private TechLevel techLevel;
     private PriceResources resources;
-<<<<<<< HEAD
     private Events event;
     private Random rand;
 
-    public SolarSystem() {
-    }
-=======
-    // --Commented out by Inspection (4/8/2019 5:11 PM):private Events event;
-    // --Commented out by Inspection (4/8/2019 5:11 PM):private Random rand;
-    /**
-     * Construct
-     * @param name the name
-     * */
->>>>>>> f7bf939aec99c542d296e9a6f6917eceedebcb81
+//    public SolarSystem() {
+//    }
+
     public SolarSystem(String name) {
         this.name = name;
     }

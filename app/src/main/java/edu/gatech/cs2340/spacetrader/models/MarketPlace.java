@@ -159,15 +159,10 @@ public class MarketPlace implements Parcelable {
         if (solar.getTechLevel().getValue() >= res.getMTLP()) {
             calculateBuyPrice(priceRes);
 
-<<<<<<< HEAD
             if (buyMap.keySet().contains(res.getType()) && player.getCredits() >= buyMap.get(res.getType())*count) {
                 if (count > quantMap.get(res.getType())) {
                     throw new IllegalArgumentException("Insufficient resource to buy");
-=======
-            if (buyMap.keySet().contains(res) && player.getCredits() >= buyMap.get(res)*count) {
-                if (count > quantMap.get(res)) {
-                    throw new IllegalArgumentException("Insufficient number of specific resource available for purchase");
->>>>>>> f7bf939aec99c542d296e9a6f6917eceedebcb81
+
                 }
                 cargo.addCargo(res, count);
                 player.setCredits(player.getCredits() - buyMap.get(res.getType())*count);

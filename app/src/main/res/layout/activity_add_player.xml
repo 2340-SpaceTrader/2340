@@ -187,11 +187,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="297dp"
         android:layout_marginBottom="10dp"
-<<<<<<< HEAD
         android:text="back" />
-=======
-        android:text="Exit"
-        tools:ignore="HardcodedText,RtlHardcoded" />
->>>>>>> f7bf939aec99c542d296e9a6f6917eceedebcb81
+
 
 </RelativeLayout>

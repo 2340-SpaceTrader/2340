@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-<<<<<<< HEAD
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -15,8 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import edu.gatech.cs2340.spacetrader.R;
-=======
->>>>>>> f7bf939aec99c542d296e9a6f6917eceedebcb81
+
 import edu.gatech.cs2340.spacetrader.WelcomeActivity;
 import edu.gatech.cs2340.spacetrader.models.player;
 

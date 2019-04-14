@@ -17,7 +17,6 @@ public class Cargo implements Parcelable {
 
     private int spaceCapacity;
     private int size;
-<<<<<<< HEAD
     private HashMap<String, Integer> cargo;
 
     public Cargo() {
@@ -31,26 +30,6 @@ public class Cargo implements Parcelable {
 //        cargo = new HashMap<>();
 //    }
 
-=======
-    private HashMap<Resources, Integer> cargo;
-    /**
-     * constructor
-     *
-     * @param spaceCapacity storage
-     *
-     */
-    public Cargo(int spaceCapacity) {
-        this.spaceCapacity = spaceCapacity;
-        size = 0;
-        cargo = new HashMap<>();
-    }
-    /**
-     * constructor
-     *
-     * @param in value
-     *
-     */
->>>>>>> f7bf939aec99c542d296e9a6f6917eceedebcb81
     protected Cargo(Parcel in) {
         spaceCapacity = in.readInt();
         size = in.readInt();
@@ -122,19 +101,12 @@ public class Cargo implements Parcelable {
         if (count <= 0) {
              throw new IllegalArgumentException("Invalid input");
         }
-<<<<<<< HEAD
          if (!cargo.keySet().contains(item.getType())) {
             throw new java.util.NoSuchElementException("The item does not exists");
         }
         if (cargo.get(item.getType()) < count) {
             throw new IllegalArgumentException("Cannot sell more than the amount of item in the cargo");
-=======
-         if (!cargo.keySet().contains(item)) {
-            throw new java.util.NoSuchElementException("The item does not exist");
-        }
-        if (cargo.get(item) < count) {
-            throw new IllegalArgumentException("Cannot sell more than the number of the item in the cargo");
->>>>>>> f7bf939aec99c542d296e9a6f6917eceedebcb81
+
         }
         cargo.put(item.getType(), cargo.get(item.getType()) - count);
         size -= count;

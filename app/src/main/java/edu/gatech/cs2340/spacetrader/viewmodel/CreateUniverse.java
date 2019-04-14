@@ -44,16 +44,11 @@ public class CreateUniverse implements Parcelable {
         }
     };
 
-<<<<<<< HEAD
     public void create() {
         Random rand = new Random();
         solarList = new ArrayList<>();
         ArrayList<String> solarName = new ArrayList<String>();
-=======
-    public ArrayList<SolarSystem> create() {
-        ArrayList<SolarSystem> solarList = new ArrayList<>();
-        List<String> solarName = new ArrayList<String>();
->>>>>>> f7bf939aec99c542d296e9a6f6917eceedebcb81
+
         solarName.add("Acamar");
         solarName.add("Brax");
         solarName.add("Calonia");
