@@ -18,14 +18,6 @@ public class AssertSum16Test {
         falseTest1.add(0);
 
         assertFalse(playerTest.assertSum16(falseTest1));
-
-        ArrayList<Integer> falseTest2 = new ArrayList<>(4);
-        falseTest1.add(-1);
-        falseTest1.add(-1);
-        falseTest1.add(-1);
-        falseTest1.add(-1);
-
-        assertFalse(playerTest.assertSum16(falseTest2));
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -39,9 +31,9 @@ public class AssertSum16Test {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void emptyList16SPTest() {
-        ArrayList<Integer> shortTest = new ArrayList<>(4);
+        ArrayList<Integer> emptyTest = new ArrayList<>(4);
 
-        playerTest.assertSum16(shortTest);
+        playerTest.assertSum16(emptyTest);
     }
 
     @Test
