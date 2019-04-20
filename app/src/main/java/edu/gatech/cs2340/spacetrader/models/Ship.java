@@ -9,21 +9,21 @@ import android.os.Parcelable;
  * @version 1.0
  */
 public class Ship implements Parcelable {
-    private ShipType ship_type;
-    Cargo storage;
+    private final ShipType ship_type;
+    private final Cargo storage;
     /**
      * Constructor
      * */
     public Ship() {
         ship_type = ShipType.GnatSpaceShip;
-        storage = new Cargo(ship_type.spaceCapacity());
+        storage = new Cargo();
     }
     /**
      * constructor
      *
      * @param in the in
      * */
-    protected Ship(Parcel in) {
+    Ship(Parcel in) {
         storage = in.readParcelable(Cargo.class.getClassLoader());
         ship_type = (ShipType) in.readSerializable();
     }

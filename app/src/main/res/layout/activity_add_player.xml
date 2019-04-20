@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,7 +18,8 @@
         android:ems="10"
         android:inputType="numberDecimal"
         android:singleLine="true"
-        android:visibility="visible" />
+        android:visibility="visible"
+        tools:ignore="LabelFor,RtlHardcoded" />
 
     <EditText
         android:id="@+id/fighter_point"
@@ -34,7 +34,8 @@
         android:ems="10"
         android:inputType="numberDecimal"
         android:singleLine="true"
-        android:visibility="visible" />
+        android:visibility="visible"
+        tools:ignore="LabelFor,RtlHardcoded" />
 
     <EditText
         android:id="@+id/trader_point"
@@ -49,7 +50,8 @@
         android:ems="10"
         android:inputType="numberDecimal"
         android:singleLine="true"
-        android:visibility="visible" />
+        android:visibility="visible"
+        tools:ignore="LabelFor,RtlHardcoded" />
 
     <EditText
         android:id="@+id/engineer_point"
@@ -64,7 +66,8 @@
         android:ems="10"
         android:inputType="numberDecimal"
         android:singleLine="true"
-        android:visibility="visible" />
+        android:visibility="visible"
+        tools:ignore="LabelFor,RtlHardcoded" />
 
     <TextView
         android:text="Name:"
@@ -72,7 +75,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/name_header"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="11dp" />
+        android:layout_marginTop="11dp"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <EditText
         android:id="@+id/player_name"
@@ -83,7 +87,8 @@
         android:layout_marginTop="11dp"
         android:layout_toRightOf="@id/name_header"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        tools:ignore="LabelFor,RtlHardcoded" />
 
     <TextView
         android:text="Difficulty:"
@@ -92,7 +97,8 @@
         android:id="@+id/difficulty_header"
         android:layout_below="@+id/name_header"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="18dp" />
+        android:layout_marginTop="18dp"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <Spinner
         android:id="@+id/difficulty_spinner"
@@ -103,7 +109,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="-17dp"
         android:layout_marginEnd="46dp"
-        android:layout_marginRight="46dp" />
+        android:layout_marginRight="46dp"
+        tools:ignore="RtlHardcoded" />
 
     <TextView
         android:text="Skill Points:"
@@ -112,7 +119,8 @@
         android:id="@+id/skill_points_header"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/difficulty_header"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="25dp"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <TextView
         android:id="@+id/pilot_header"
@@ -122,7 +130,8 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="22dp"
-        android:text="Pilot:" />
+        android:text="Pilot:"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <TextView
         android:id="@+id/fighter_header"
@@ -132,7 +141,8 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="45dp"
-        android:text="Fighter:" />
+        android:text="Fighter:"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <TextView
         android:id="@+id/trader_header"
@@ -142,7 +152,8 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="55dp"
-        android:text="Trader:" />
+        android:text="Trader:"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <TextView
         android:id="@+id/engineer_header"
@@ -152,7 +163,8 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="2dp"
         android:layout_marginTop="58dp"
-        android:text="Engineer:" />
+        android:text="Engineer:"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <Button
         android:id="@+id/ok_button"
@@ -163,7 +175,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="11dp"
         android:layout_marginBottom="12dp"
-        android:text="Ok" />
+        android:text="Ok"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <Button
         android:id="@+id/exit_button"
@@ -174,6 +187,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="297dp"
         android:layout_marginBottom="10dp"
-        android:text="Exit" />
+        android:text="back" />
+
 
 </RelativeLayout>

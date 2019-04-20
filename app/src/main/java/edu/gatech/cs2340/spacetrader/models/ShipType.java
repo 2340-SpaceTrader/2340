@@ -1,26 +1,22 @@
 package edu.gatech.cs2340.spacetrader.models;
 
-import java.io.Serializable;
 /**
  * enum class for ship types
  *
  * @author Group 46B NO MAC
  * @version 1.0
  */
-public enum ShipType implements Serializable {
+public enum ShipType {
 
-    GnatSpaceShip("GnatSpaceShip", 10);
+    GnatSpaceShip();
 
-    private String shipName;
-    private int spaceCapacity;
+    private final String shipName;
+    private final int spaceCapacity;
     /**
-     * Constructor
-     * @param shipName a ship
-     * @param spaceCapacity a ship
-     * */
-    ShipType(String shipName, int spaceCapacity) {
-        this.shipName = shipName;
-        this.spaceCapacity = spaceCapacity;
+     * Constructor  */
+    ShipType() {
+        this.shipName = "GnatSpaceShip";
+        this.spaceCapacity = 10;
     }
     /**
      * get ship name

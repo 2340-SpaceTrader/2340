@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.spacetrader.viewmodel;
 
-import android.widget.Spinner;
-
 import java.util.Random;
 
 import edu.gatech.cs2340.spacetrader.models.Events;
@@ -14,6 +12,7 @@ import edu.gatech.cs2340.spacetrader.models.player;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings("ALL")
 public class Travel {
 //    private player player;
 //    private SolarSystem planet;
@@ -25,10 +24,23 @@ public class Travel {
     private Random rand = new Random();
     private Events event;
     private double numRand;
+    /**
+     * calculates distance between planets
+     * @param sys1 solar system 1
+     * @param sys2 solar system 2
+     * @return double of distance between two planets
+     */
     public double calDist(SolarSystem sys1, SolarSystem sys2) {
 
-        return Math.sqrt(Math.pow(sys2.getX() - sys1.getX(), 2) + Math.pow(sys2.getY() - sys1.getY(), 2));
+        return Math.sqrt(Math.pow(sys2.getX() - sys1.getX(), 2)
+                + Math.pow(sys2.getY() - sys1.getY(), 2));
     }
+    /**
+     * travel between planets
+     * @param player player
+     * @param planet planet
+     * @return lets player travel to planet
+     */
     public void travel(player player, SolarSystem planet) {
         double dist = calDist(player.getPlanet(), planet);
         System.out.println(dist);
@@ -39,7 +51,9 @@ public class Travel {
             throw new IllegalArgumentException("Not enough fuel to travel");
         }
         player.setFuel(player.getFuel() - dist);
+        System.out.println("+++++++++++++++++++++" + player.getPlanet().getName());
         player.setPlanet(planet);
+        System.out.println("------------------" + player.getPlanet().getName());
         event = planet.getRandEvent();
         numRand = rand.nextDouble();
         if (numRand < 0.8) {
@@ -68,9 +82,17 @@ public class Travel {
         }
     }
 
+    /**
+     * get event
+     * @return event
+     */
     public Events getEvent() {
         return event;
     }
+    /**
+     * get random number
+     * @return random number
+     */
     public double getRand() {
         return numRand;
     }

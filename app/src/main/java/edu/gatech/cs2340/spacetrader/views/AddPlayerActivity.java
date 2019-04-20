@@ -1,14 +1,21 @@
 package edu.gatech.cs2340.spacetrader.views;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -26,6 +33,7 @@ import edu.gatech.cs2340.spacetrader.models.player;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings("ALL")
 public class AddPlayerActivity extends AppCompatActivity {
 
     private EditText name;
@@ -38,12 +46,20 @@ public class AddPlayerActivity extends AppCompatActivity {
     private MarketPlace marketPlace;
     private SolarSystem planet;
 
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference playerDb;
+    private Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_player);
 
 //        getIncomingIntent();
+
+        mDatabase = FirebaseDatabase.getInstance();
+        playerDb = mDatabase.getReference("player");
+        mContext = this;
 
         name = findViewById(R.id.player_name);
         pilotPts = findViewById(R.id.pilot_point);
@@ -52,7 +68,7 @@ public class AddPlayerActivity extends AppCompatActivity {
         fighterPts = findViewById(R.id.fighter_point);
         difficultySpinner = findViewById(R.id.difficulty_spinner);
         Button okButton = findViewById(R.id.ok_button);
-        Button exitButton = findViewById(R.id.exit_button);
+        Button backButton = findViewById(R.id.exit_button);
 
         ArrayAdapter<gameDifficulty> difficultyAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,gameDifficulty.values());
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -60,11 +76,11 @@ public class AddPlayerActivity extends AppCompatActivity {
 
 
 
-        exitButton.setOnClickListener(new View.OnClickListener() {
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                System.exit(0);
+                Intent intent = new Intent(AddPlayerActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -92,21 +108,45 @@ public class AddPlayerActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Total skill points cannot be smaller or bigger than 16", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                CreateUniverse universe = new CreateUniverse();
-                ArrayList<SolarSystem> solarList = new ArrayList<>(universe.create());
+//                final ArrayList<SolarSystem> solarList = new ArrayList<>(player.getUniverse().create());
+                final ArrayList<SolarSystem> solarList = player.getUniverse().getSolarList();
                 for(int i = 0 ; i < solarList.size(); i++) {
                     System.out.println("----------------------------");
                     System.out.println("solarPlanet " + i + " info:");
                     System.out.println("");
                     System.out.println(solarList.get(i).toString());
                 }
-                System.out.println(player.toString());
-                Intent intent = new Intent(AddPlayerActivity.this, PlayingActivity.class);
-                intent.putExtra("player", player);
-                intent.putExtra("marketPlace", marketPlace);
-                intent.putExtra("planet", planet);
-                intent.putExtra("solarList", solarList );
-                startActivity(intent);
+                //System.out.println(player.toString());
+//                Intent intent = new Intent(AddPlayerActivity.this, PlayingActivity.class);
+//                intent.putExtra("player", player);
+//                intent.putExtra("marketPlace", marketPlace);
+//                intent.putExtra("planet", planet);
+//                intent.putExtra("solarList", solarList );
+
+//                DatabaseReference usersRef = playerDb.child("player");
+//                usersRef.setValue(usersRef);
+//                Intent intent = new Intent(mContext, PlayingActivity.class);
+//                intent.putExtra("player", player);
+//                startActivity(intent);
+
+
+                //Working--------------------------------------------
+                String newKey = mDatabase.getReference().child("player").push().getKey();
+                playerDb.child(newKey).setValue(player).addOnCompleteListener((Activity) mContext, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Intent intent = new Intent(mContext, PlayingActivity.class);
+                        intent.putExtra("player", player);
+                        intent.putExtra("marketPlace", marketPlace);
+                        intent.putExtra("planet", planet);
+                        intent.putExtra("solarList", solarList );
+                        startActivity(intent);
+                    }
+                });
+
+
+
+                //startActivity(intent);
             }
         });
 

@@ -1,16 +1,12 @@
 package edu.gatech.cs2340.spacetrader.models;
-/**
- * Your implementation of various sorting algorithms.
- *
- * @author Group 46B NO MAC
- * @version 1.0
- */
+
 /**
  * Enum class for random events
  *
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings("ALL")
 public enum Events {
     Stolen_Cargo(10),
     Stolen_Credit(9),
@@ -26,6 +22,10 @@ public enum Events {
     Events(int randomValue) {
         this.randomValue = randomValue;
     }
+    /**
+     * get random value
+     * @return random value
+     */
     public int getRandomValue() {
         return randomValue;
     }

@@ -1,13 +1,12 @@
 package edu.gatech.cs2340.spacetrader.models;
 
-import java.io.Serializable;
 /**
  * Enum class for prices determination
  *
  * @author Group 46B NO MAC
  * @version 1.0
  */
-public enum PriceResources implements Serializable {
+public enum PriceResources {
     //expesive
     Desert("Desert", 5.0),
     Lifeless("Lifeless", 5.0),
@@ -36,8 +35,8 @@ public enum PriceResources implements Serializable {
     //Never
     Never("Nonspecialresources", 1.0);
 
-    String typePrice;
-    double increase;
+    final String typePrice;
+    final double increase;
     /**
      * Constructor
      * @param typePrice type price

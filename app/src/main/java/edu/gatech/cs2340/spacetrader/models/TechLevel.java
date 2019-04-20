@@ -8,6 +8,7 @@ import java.io.Serializable;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings("ALL")
 public enum TechLevel implements Serializable {
     PreAgriculture("Pre-Agriculture", 0),
     Agriculture("Agriculture", 1),

@@ -1,10 +1,11 @@
 package edu.gatech.cs2340.spacetrader.models;
 
+import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
 
@@ -14,16 +15,21 @@ import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
  * @author Group 46B NO MAC
  * @version 1.0
  */
+@SuppressWarnings("ALL")
 public class player implements Parcelable {
     private String name;
     private int skillPoints;
     private double credits;
     private Ship ship;
     private gameDifficulty gameDifficulty;
-    private ArrayList SPAllocation;
+    private ArrayList<Integer> SPAllocation;
     private double fuel;
     private SolarSystem planet;
+    private CreateUniverse universe;
 
+    public player() {
+
+    }
     /**
      * Constructor of a player
      * @param name
@@ -39,8 +45,10 @@ public class player implements Parcelable {
         ship = new Ship();
         fuel = 1000.0;
         SPAllocation = new ArrayList<Integer>(4);
-        CreateUniverse universe = new CreateUniverse();
-        ArrayList<SolarSystem> solarList = new ArrayList<>(universe.create());
+        universe = new CreateUniverse();
+        universe.create();
+        ArrayList<SolarSystem> solarList = universe.getSolarList();
+
         planet = solarList.get(0);
     }
     /**
@@ -135,11 +143,16 @@ public class player implements Parcelable {
     public SolarSystem getPlanet() {
         return planet;
     }
-    /**
-     * set planet
-     * @param planet a planet
-     * @return planet
-     */
+
+    public CreateUniverse getUniverse() {
+        return universe;
+    }
+
+    public void setUniverse(CreateUniverse universe) {
+        this.universe = universe;
+    }
+
+
     public void setPlanet(SolarSystem planet) {
         this.planet = planet;
     }
@@ -223,6 +236,7 @@ public class player implements Parcelable {
      * To display player's attributes
      * @return String
      */
+    @SuppressLint("DefaultLocale")
     @Override
     public String toString() {
         return String.format("Player's name: %s \n Game mode: %s \n " +
