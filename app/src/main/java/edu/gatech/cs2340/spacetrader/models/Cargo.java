@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Cargo for ship
+ * Cargo for ship it creates new cargo
  *
  * @author Group 46B NO MAC
  * @version 1.0
