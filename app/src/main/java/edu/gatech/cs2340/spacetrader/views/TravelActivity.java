@@ -12,6 +12,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import edu.gatech.cs2340.spacetrader.R;
+import edu.gatech.cs2340.spacetrader.models.Encounter;
 import edu.gatech.cs2340.spacetrader.models.MarketPlace;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.gameDifficulty;
@@ -51,9 +52,22 @@ public class TravelActivity extends AppCompatActivity {
                 go = new Travel();
                 try {
                     go.travel(player, (SolarSystem) spinner.getSelectedItem());
-                    if (go.getRand() < 0.8) {
+                    if (go.getRand() <= 0.4) {
                         Toast.makeText(getApplicationContext(), "This random event happened: " + go.getEvent(),Toast.LENGTH_LONG).show();
                     }
+                    //setting up the other classes Mercenaries, pirates, police, politicians, etc
+//                    else  {
+//                         boolean[] encounter = Encounter.getActive();
+//                        for (int i = 0; i < encounter.length; i++) {
+//                           if (encounter[i]){
+//                               Toast.makeText(getApplicationContext(),
+//                                       "You had an encounter with: " + Encounter.getEncounter()[i],Toast.LENGTH_LONG).show();
+//                               System.out.print(Encounter.getEncounter()[i]);
+//                           }
+//                        }
+//
+//
+//                    }
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }

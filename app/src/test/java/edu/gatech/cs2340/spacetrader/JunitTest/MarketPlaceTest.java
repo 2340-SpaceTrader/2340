@@ -22,12 +22,12 @@ public class MarketPlaceTest {
 //    public void buy() {
 //    }
 //
-//    @Test
-//    public void calculateBuyPrice() {
-//    }
+    @Test
+    public void calculateBuyPrice() {
+    }
 //
-//    @Test
-//    public void calculateSellPrice() {
-//    }
+    @Test
+    public void calculateSellPrice() {
+    }
 
 }

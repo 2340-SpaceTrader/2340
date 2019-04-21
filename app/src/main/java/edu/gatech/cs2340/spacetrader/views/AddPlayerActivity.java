@@ -15,6 +15,7 @@ import java.util.ArrayList;
 //import edu.gatech.cs2340.spacetrader.MainActivity;
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.models.MarketPlace;
+import edu.gatech.cs2340.spacetrader.models.Weapons;
 import edu.gatech.cs2340.spacetrader.viewmodel.CreateUniverse;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.gameDifficulty;
@@ -34,6 +35,7 @@ public class AddPlayerActivity extends AppCompatActivity {
     private EditText traderPts;
     private EditText fighterPts;
     private Spinner difficultySpinner;
+    private Spinner weaponSpinner;
     private player player;
     private MarketPlace marketPlace;
     private SolarSystem planet;
@@ -51,6 +53,8 @@ public class AddPlayerActivity extends AppCompatActivity {
         traderPts = findViewById(R.id.trader_point);
         fighterPts = findViewById(R.id.fighter_point);
         difficultySpinner = findViewById(R.id.difficulty_spinner);
+        weaponSpinner = findViewById(R.id.weapon_spinner);
+
         Button okButton = findViewById(R.id.ok_button);
         Button exitButton = findViewById(R.id.exit_button);
 
@@ -58,6 +62,9 @@ public class AddPlayerActivity extends AppCompatActivity {
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
 
+        ArrayAdapter<Weapons> weaponAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Weapons.values());
+        weaponAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        weaponSpinner.setAdapter(weaponAdapter);
 
 
         exitButton.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +78,8 @@ public class AddPlayerActivity extends AppCompatActivity {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player = new player(name.getText().toString(), (gameDifficulty) difficultySpinner.getSelectedItem());
+                //player = new player(name.getText().toString(), (gameDifficulty) difficultySpinner.getSelectedItem());
+                player = new player(name.getText().toString(), (gameDifficulty) difficultySpinner.getSelectedItem(), (Weapons) weaponSpinner.getSelectedItem());
                 ArrayList<Integer> playerPts = new ArrayList<>(4);
                 if(name.length() == 0 || pilotPts.length() == 0
                         || fighterPts.length() == 0 || traderPts.length() == 0

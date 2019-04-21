@@ -8,6 +8,9 @@ import edu.gatech.cs2340.spacetrader.models.Events;
 import edu.gatech.cs2340.spacetrader.models.Resources;
 import edu.gatech.cs2340.spacetrader.models.SolarSystem;
 import edu.gatech.cs2340.spacetrader.models.player;
+
+import static edu.gatech.cs2340.spacetrader.models.Encounter.getEncounter;
+
 /**
  * Travels to anoter planet
  *
@@ -38,11 +41,14 @@ public class Travel {
         if (player.getFuel() < dist ) {
             throw new IllegalArgumentException("Not enough fuel to travel");
         }
+
         player.setFuel(player.getFuel() - dist);
         player.setPlanet(planet);
         event = planet.getRandEvent();
         numRand = rand.nextDouble();
-        if (numRand < 0.8) {
+
+        //random event
+        if (numRand < 0.4) {
             if (event.equals(Events.Stolen_Cargo)) {
                 player.getShip().getCargoStorage().clear();
             } else if (event.equals(Events.Free_Resource)) {
@@ -65,6 +71,9 @@ public class Travel {
             } else if (event.equals(Events.Free_Fuel)) {
                     player.setFuel(player.getFuel() + 50);
             }
+        } else {
+            //when traveling determines if there is an encounter
+            getEncounter(player,planet);
         }
     }
 

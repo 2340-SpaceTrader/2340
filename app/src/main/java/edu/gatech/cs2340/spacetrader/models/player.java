@@ -23,7 +23,7 @@ public class player implements Parcelable {
     private ArrayList SPAllocation;
     private double fuel;
     private SolarSystem planet;
-
+    private Weapons gun;
     /**
      * Constructor of a player
      * @param name
@@ -34,6 +34,21 @@ public class player implements Parcelable {
     {
         this.name = name;
         this.gameDifficulty = gameDifficulty;
+        this.gun = Weapons.RayGun;
+        skillPoints = 16;
+        credits = 1000.0;
+        ship = new Ship();
+        fuel = 1000.0;
+        SPAllocation = new ArrayList<Integer>(4);
+        CreateUniverse universe = new CreateUniverse();
+        ArrayList<SolarSystem> solarList = new ArrayList<>(universe.create());
+        planet = solarList.get(0);
+    }
+    public player(String name, gameDifficulty gameDifficulty, Weapons weapons)
+    {
+        this.name = name;
+        this.gameDifficulty = gameDifficulty;
+        this.gun = weapons;
         skillPoints = 16;
         credits = 1000.0;
         ship = new Ship();
